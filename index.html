@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080809">
+<title>Ree Haawn PDF</title>
+<style>
+:root{
+  --bg:#080809;--panel:#151417;--panel2:#1c1a1e;--panel3:#222025;
+  --line:#353138;--line2:#514a50;--text:#f3f0e9;--muted:#a49da1;
+  --gold:#d2b17a;--gold2:#ebd2a3;--red:#e18b91;--green:#8fc8a8;
+  --shadow:0 24px 70px #0009;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -18%,#29242a 0%,#111013 42%,#070708 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+header{height:82px;padding:0 max(4vw,20px);display:flex;align-items:center;justify-content:space-between;background:#09090bf2;border-bottom:1px solid #2d292f;position:sticky;top:0;z-index:10;backdrop-filter:blur(16px)}
+.brand{display:flex;align-items:center;gap:15px;font-size:20px;font-weight:800;letter-spacing:-.55px}
+.brand-logo{width:68px;height:49px;display:grid;place-items:center;background:#030304;border:1px solid #686168;border-radius:11px;padding:5px;box-shadow:inset 0 0 18px #ffffff09,0 7px 24px #0007}
+.brand-logo img{display:block;width:100%;height:100%;object-fit:contain}
+.brand-name span{color:var(--gold)}
+.header-note{font-size:11px;color:#aaa198;text-transform:uppercase;letter-spacing:1.8px}
+main{width:min(1500px,94vw);margin:42px auto 64px}
+.hero{text-align:center;margin:0 0 30px}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.hero h1{font-size:clamp(30px,4.2vw,48px);letter-spacing:-1.8px;margin:0 0 9px;color:#f5f1e9}
+.hero p{margin:0;color:#aaa2a5;font-size:14px}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 22px}
+.tool{min-height:142px;padding:20px 21px;border:1px solid #363138;border-radius:17px;background:linear-gradient(145deg,#1d1a1f,#111114);color:var(--text);text-align:left;display:grid;grid-template-columns:54px 1fr;column-gap:15px;align-content:center;transition:transform .2s,border-color .2s,box-shadow .2s}
+.tool:hover{transform:translateY(-3px);border-color:#766447;box-shadow:0 15px 36px #0008}
+.tool.active{border-color:var(--gold);background:linear-gradient(145deg,#29232a,#151317);box-shadow:0 0 0 1px #d2b17a24,0 16px 38px #0009}
+.tool-icon{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;grid-row:span 2;background:linear-gradient(145deg,#352e29,#1c1a1d);border:1px solid #5b4b37;color:var(--gold2)}
+.tool-icon svg{width:27px;height:27px;stroke:currentColor;fill:none;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round}
+.tool strong{font-size:15px;align-self:end;margin:0 0 5px}
+.tool small{font-size:12px;color:#aaa2a3;line-height:1.5;align-self:start}
+.workspace{background:linear-gradient(145deg,#19171b,#101013);border:1px solid #343038;border-radius:21px;padding:25px;box-shadow:var(--shadow);min-height:430px}
+.work-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:19px}
+.work-head h2{font-size:21px;letter-spacing:-.5px;margin:0}
+.work-head p{font-size:12px;color:var(--muted);margin:5px 0 0}
+.pill{border:1px solid #514536;border-radius:999px;padding:7px 11px;color:#dfc18e;font-size:11px;white-space:nowrap}
+.drop{border:1px dashed #675d54;border-radius:16px;background:linear-gradient(145deg,#1c1a1e,#121215);padding:29px 18px;text-align:center;transition:.2s}
+.drop.drag{border-color:var(--gold);background:#28221b;box-shadow:inset 0 0 0 1px #d2b17a24}
+.upload-icon{width:48px;height:48px;margin:0 auto 12px;border-radius:15px;display:grid;place-items:center;background:#332a1f;color:var(--gold2)}
+.upload-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.drop strong{display:block;font-size:14px;margin-bottom:6px}
+.drop p{font-size:12px;color:var(--muted);margin:0 0 15px}
+input[type=file]{display:none}
+.btn,.file-label{border:1px solid transparent;border-radius:10px;padding:10px 14px;font-size:12px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:.16s;white-space:nowrap}
+.btn:disabled{opacity:.38;cursor:not-allowed}
+.primary,.file-label{background:linear-gradient(135deg,#d6b982,#a98752);color:#17130e}
+.primary:hover,.file-label:hover{background:linear-gradient(135deg,#ecd19c,#c19b62)}
+.secondary{background:#29262c;color:#e9e3dc;border-color:#454047}
+.secondary:hover{background:#373239;border-color:#655a60}
+.ghost{background:transparent;color:#c9c0b9;border-color:#49434a}
+.ghost:hover{background:#29262c}
+.danger{background:#3b2226;color:#f0a1a6;border-color:#6a4146}
+.danger:hover{background:#51292f}
+.file-list{display:grid;gap:8px;margin-top:14px}
+.file-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#201e22;border:1px solid #3a363d;border-radius:11px;padding:10px 12px}
+.file-title{font-size:12px;font-weight:750;overflow-wrap:anywhere}
+.file-sub{font-size:11px;color:var(--muted);margin-top:3px}
+.file-actions{display:flex;gap:6px;flex-shrink:0}
+.file-actions .btn{padding:7px 10px}
+.controls{margin-top:20px}
+.field-label{display:block;font-size:12px;font-weight:750;margin:0 0 7px;color:#e9e3dc}
+.text-input,.text-area{width:100%;border:1px solid #49434b;border-radius:10px;padding:11px 12px;background:#0e0e11;color:#f4f0e9;outline:none;font-size:13px}
+.text-input:focus,.text-area:focus{border-color:var(--gold);box-shadow:0 0 0 3px #d2b17a1c}
+.text-input::placeholder,.text-area::placeholder{color:#797278}
+.hint{font-size:11px;color:var(--muted);line-height:1.5;margin:7px 0 0}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px;align-items:center}
+.status{min-height:20px;margin-top:13px;font-size:12px;color:#b8b0a9}
+.status.error{color:var(--red)}
+.privacy{margin-top:15px;color:#898187;font-size:10px;line-height:1.55}
+.section-label{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:22px 0 11px}
+.section-label strong{font-size:13px}
+.section-label span{font-size:11px;color:var(--muted)}
+.thumb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:13px;max-height:760px;overflow:auto;padding:2px 3px 8px}
+.page-card{min-width:0;background:#201e22;border:1px solid #3b363e;border-radius:13px;padding:10px;transition:border-color .15s,background .15s}
+.page-card.selected{border-color:var(--gold);background:#2a251f;box-shadow:0 0 0 1px #d2b17a1e}
+.thumb-wrap{height:255px;border-radius:7px;background:#e9e7e2;border:1px solid #59545a;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.thumb-wrap canvas{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.thumb-placeholder{color:#4a454a;font-size:11px}
+.page-card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:9px}
+.page-card-title{font-size:11px;font-weight:750;line-height:1.4;overflow-wrap:anywhere}
+.page-card-sub{font-size:10px;color:#aaa1a2;margin-top:3px;overflow-wrap:anywhere}
+.check-wrap{display:flex;align-items:center;gap:6px;font-size:10px;color:#d9c69e;white-space:nowrap}
+.page-check{accent-color:#d2b17a;width:16px;height:16px}
+.card-actions{display:flex;gap:5px;margin-top:8px}
+.card-actions .btn{flex:1;padding:7px 8px;font-size:10px}
+.empty-note{padding:25px;border:1px dashed #49434a;border-radius:12px;color:var(--muted);font-size:12px;text-align:center}
+.merge-source-list{display:grid;gap:7px;margin:12px 0}
+.merge-source{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 11px;background:#201e22;border:1px solid #3a363d;border-radius:10px}
+.merge-source-name{font-size:11px;font-weight:700;overflow-wrap:anywhere}
+.merge-source-pages{font-size:10px;color:var(--muted);margin-top:3px}
+.editor-toolbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;padding:11px;background:#211f23;border:1px solid #3a353d;border-radius:13px;margin:16px 0 12px}
+.toolbar-divider{height:26px;width:1px;background:#4a444b;margin:0 3px}
+.toolbar-group{display:flex;align-items:center;gap:6px}
+.editor-toolbar .btn{padding:9px 11px}
+.editor-layout{display:grid;grid-template-columns:170px minmax(0,1fr);gap:14px;align-items:stretch}
+.filmstrip{height:min(82vh,1050px);min-height:620px;overflow:auto;padding:8px;background:#111013;border:1px solid #37323a;border-radius:13px}
+.film-card{padding:7px;border:1px solid transparent;border-radius:10px;margin-bottom:8px;cursor:pointer}
+.film-card:hover{background:#242126}
+.film-card.active{border-color:var(--gold);background:#29231d}
+.film-thumb{height:145px;display:flex;align-items:center;justify-content:center;background:#e9e7e2;border:1px solid #575159;border-radius:5px;overflow:hidden}
+.film-thumb canvas{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.film-label{font-size:10px;text-align:center;margin-top:6px;color:#c9c1bb}
+.editor-main{min-width:0}
+.editor-stage{height:min(82vh,1050px);min-height:620px;overflow:auto;display:flex;align-items:center;justify-content:center;padding:22px;background:radial-gradient(ellipse at center,#242126 0%,#111013 75%);border:1px solid #38333b;border-radius:13px;position:relative}
+.page-shell{position:relative;flex:0 0 auto;background:#fff;box-shadow:0 12px 45px #000b;line-height:0}
+#pageCanvas{display:block}
+#overlayLayer{position:absolute;inset:0;overflow:hidden;line-height:normal;touch-action:none}
+.overlay-object{position:absolute;box-sizing:border-box;cursor:move;user-select:none;touch-action:none}
+.overlay-object.selected{outline:1px dashed #d6ae68;outline-offset:2px}
+.overlay-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.2;font-family:Arial,Helvetica,sans-serif;text-shadow:0 0 1px #fff7}
+.overlay-image{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.overlay-cover{border:1px solid #c3b9a8}
+.resize-handle{position:absolute;width:12px;height:12px;right:-7px;bottom:-7px;border-radius:50%;background:#e4c58e;border:2px solid #161317;cursor:nwse-resize;box-shadow:0 1px 5px #0008}
+.object-tools{display:none;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 12px;padding:10px 12px;border:1px solid #494047;border-radius:11px;background:#19171b}
+.object-tools.visible{display:flex}
+.object-tools label{font-size:10px;color:#c4bab2}
+.object-tools input[type=range]{width:105px;accent-color:var(--gold)}
+.object-tools input[type=color]{width:31px;height:27px;padding:2px;border:1px solid #555;border-radius:6px;background:#222}
+.editor-foot{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:9px 2px;color:var(--muted);font-size:10px}
+.modal-backdrop{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:18px;z-index:30}
+.modal{width:min(480px,100%);background:#1d1a20;border:1px solid #51464b;border-radius:17px;padding:22px;box-shadow:0 30px 100px #000c}
+.modal h3{margin:0 0 7px;font-size:18px}
+.modal p{margin:0 0 14px;color:var(--muted);font-size:11px;line-height:1.5}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+[hidden]{display:none!important}
+@media(max-width:900px){
+  main{width:95vw;margin-top:30px}.workspace{padding:17px}
+  .editor-layout{grid-template-columns:130px minmax(0,1fr)}.filmstrip{min-height:540px}.editor-stage{min-height:540px}
+  .film-thumb{height:115px}
+}
+@media(max-width:650px){
+  header{height:70px}.brand{font-size:17px}.brand-logo{width:55px;height:40px}.header-note{display:none}
+  .tools{grid-template-columns:1fr;gap:9px}.tool{min-height:88px;padding:13px 15px;grid-template-columns:48px 1fr}.tool-icon{width:45px;height:45px}
+  .work-head{align-items:flex-start;flex-direction:column}.pill{align-self:flex-start}
+  .thumb-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.thumb-wrap{height:205px}
+  .editor-layout{grid-template-columns:1fr}.filmstrip{height:135px;min-height:0;display:flex;gap:7px;overflow-x:auto;overflow-y:hidden}
+  .film-card{flex:0 0 94px;margin:0;padding:5px}.film-thumb{height:88px}
+  .editor-stage{height:72vh;min-height:430px;padding:10px}
+  .editor-toolbar .btn{font-size:10px;padding:8px}
+  .toolbar-divider{display:none}
+}
+
+.hero{height:clamp(380px,52vh,460px);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.hero-logo{display:block;width:min(420px,80vw);height:auto;margin:0 auto 6px;mix-blend-mode:screen;will-change:transform,opacity,filter;transition:opacity .15s linear,filter .15s linear}
+.hero-text{display:flex;flex-direction:column;align-items:center;will-change:transform,opacity}
+.header-note{transition:opacity .3s ease}
+.scrolled .header-note{opacity:0}
+.btn.toggled{background:linear-gradient(135deg,#d6b982,#a98752);color:#17130e;border-color:#d6b982}
+.text-style-group{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.mini-select{background:#0e0e11;color:#f4f0e9;border:1px solid #49434b;border-radius:9px;padding:7px 9px;font-size:12px}
+@media(max-width:650px){.hero{height:auto;padding:20px 0 10px}.hero-logo{width:min(260px,70vw)}}
+
+.menu{position:relative;margin-left:auto}
+.menu-btn{background:#1c1a1e;color:#e9e3dc;border:1px solid #514536;border-radius:999px;padding:9px 16px;font:inherit;font-size:13px;cursor:pointer}
+.menu-btn:hover,.menu.open .menu-btn{border-color:#d2b17a;color:#f0d9a8}
+.menu::after{content:"";position:absolute;left:0;right:0;top:100%;height:12px}
+.dd{display:none;position:absolute;right:0;top:calc(100% + 10px);width:min(340px,92vw);max-height:72vh;overflow:auto;background:#151417;border:1px solid #353138;border-radius:16px;padding:8px;box-shadow:0 24px 70px #000c;z-index:20}
+.menu.open .dd{display:block}
+@media (hover:hover) and (pointer:fine){.menu:hover .dd{display:block}}
+.dd h4{margin:11px 9px 5px;font-size:10px;letter-spacing:2px;color:#d2b17a;text-transform:uppercase}
+.dd button{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;background:none;border:0;color:#f3f0e9;padding:9px 10px;border-radius:9px;text-align:left;font:inherit;font-size:13px;cursor:pointer}
+.dd button:hover:not(:disabled),.dd button:focus-visible{background:#29242a}
+.dd button:disabled{color:#625b61;cursor:not-allowed}
+.dd small{font-size:10px;color:#8a8289;white-space:nowrap}
+.crop-ui{margin-bottom:6px}
+.crop-stage{background:#0e0d10;border:1px solid #37323a;border-radius:13px;padding:20px;display:flex;justify-content:center;align-items:flex-start;min-height:280px;overflow:auto}
+.crop-wrap{position:relative;overflow:visible;line-height:0;touch-action:none;user-select:none;background:#fff;box-shadow:0 10px 40px #000b}
+.crop-wrap canvas{display:block}
+.crop-box{position:absolute;box-sizing:border-box;border:2px dashed #d6ae68;cursor:move;box-shadow:0 0 0 9999px rgba(0,0,0,.55);touch-action:none}
+.crop-box span{position:absolute;width:14px;height:14px;background:#e4c58e;border:2px solid #161317;border-radius:50%;box-sizing:border-box}
+.crop-box span[data-h=nw]{left:-8px;top:-8px;cursor:nwse-resize}
+.crop-box span[data-h=ne]{right:-8px;top:-8px;cursor:nesw-resize}
+.crop-box span[data-h=sw]{left:-8px;bottom:-8px;cursor:nesw-resize}
+.crop-box span[data-h=se]{right:-8px;bottom:-8px;cursor:nwse-resize}
+.overlay-cover,.overlay-picture{outline:1px dashed rgba(228,197,142,.8);outline-offset:-1px}
+.overlay-cover.selected,.overlay-picture.selected{outline:1px solid #e4c58e;outline-offset:-1px;box-shadow:0 0 0 1px rgba(228,197,142,.25)}
+.resize-handle{position:absolute;width:10px;height:10px;box-sizing:border-box;background:#fff;border:1.5px solid #161317;border-radius:2px;z-index:3;box-shadow:0 0 0 1px #e4c58e;right:auto;bottom:auto}
+.resize-handle[data-h=nw]{left:-6px;top:-6px;cursor:nwse-resize}
+.resize-handle[data-h=se]{right:-6px;bottom:-6px;cursor:nwse-resize}
+.resize-handle[data-h=ne]{right:-6px;top:-6px;cursor:nesw-resize}
+.resize-handle[data-h=sw]{left:-6px;bottom:-6px;cursor:nesw-resize}
+.resize-handle[data-h=n]{left:50%;top:-6px;margin-left:-5px;cursor:ns-resize}
+.resize-handle[data-h=s]{left:50%;bottom:-6px;margin-left:-5px;cursor:ns-resize}
+.resize-handle[data-h=e]{right:-6px;top:50%;margin-top:-5px;cursor:ew-resize}
+.resize-handle[data-h=w]{left:-6px;top:50%;margin-top:-5px;cursor:ew-resize}
+@keyframes logoPop{0%{opacity:0;transform:translateY(60px) scale(.5);filter:blur(14px)}60%{opacity:1;transform:translateY(-10px) scale(1.07);filter:blur(0) drop-shadow(0 0 34px rgba(230,200,140,.6))}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+@keyframes halo{0%,100%{opacity:.35}50%{opacity:.8}}
+.hero-logo{animation:logoPop 1.1s cubic-bezier(.2,.8,.2,1) backwards}
+.hero::before{content:"";position:absolute;inset:0;margin:auto;width:min(560px,92vw);height:min(560px,92vw);border-radius:50%;background:radial-gradient(circle,rgba(214,174,104,.3),transparent 65%);pointer-events:none;animation:halo 4s ease-in-out infinite;z-index:0}
+.hero-logo,.hero-text{position:relative;z-index:1}
+.site-footer{position:relative;margin-top:70px;padding:34px 22px 26px;text-align:center;background:linear-gradient(180deg,#0b0a0d,#040405);border-top:1px solid #2a2530;overflow:hidden}
+.site-footer::before{content:"";position:absolute;left:-40%;top:0;width:40%;height:2px;background:linear-gradient(90deg,transparent,#e4c58e,transparent);animation:shimmer 3.2s linear infinite}
+@keyframes shimmer{from{left:-40%}to{left:100%}}
+.foot-brand{font-weight:700;letter-spacing:.22em;color:#e4c58e;text-shadow:0 0 16px rgba(228,197,142,.35);font-size:15px}
+.foot-address{margin:14px 0 6px;letter-spacing:.14em;font-size:13px;color:#d8cfc3}
+.foot-note{font-size:12px;color:#8a8289;margin:0}
+.foot-copy{font-size:11px;color:#625b61;margin:18px 0 0}
+.to-top{margin-top:16px;background:none;border:1px solid #514536;color:#e4c58e;border-radius:999px;padding:8px 16px;cursor:pointer;font:inherit;font-size:12px;letter-spacing:.08em;transition:box-shadow .3s}
+.to-top:hover{box-shadow:0 0 18px rgba(228,197,142,.35)}
+@media (prefers-reduced-motion:reduce){.hero-logo,.hero::before,.site-footer::before{animation:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="brand-logo"><img src="data:image/png;base64,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" alt="Double R monogram"></div>
+    <div class="brand-name">Ree Haawn <span>PDF</span></div>
+  </div>
+  <div class="menu" id="menu">
+    <button class="menu-btn" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="dd">Tools ⚙</button>
+    <div class="dd" id="dd" role="menu">
+      <h4>Main tools</h4>
+      <button data-mode="delete">Delete PDF Pages</button>
+      <button data-mode="merge">Merge Pages</button>
+      <button data-mode="edit">Edit PDF Pages</button>
+      <h4>Page management</h4>
+      <button data-tool="crop">Crop PDF</button>
+      <button data-tool="rotate">Rotate PDF</button>
+      <button data-tool="blank">Insert Blank Pages</button>
+      <button data-tool="bates">Bates Numbering</button>
+      <h4>Optimization</h4>
+      <button data-tool="compress">Compress PDF</button>
+      <h4>Conversion</h4>
+      <button data-tool="pdfword">PDF to Word <small>basic text</small></button>
+      <button data-tool="pdfjpg">PDF to JPG</button>
+      <button data-tool="pdftxt">PDF to Text</button>
+      <button data-tool="htmlpdf">HTML to PDF <small>print</small></button>
+      <button data-tool="jpgpdf">JPG to PDF</button>
+      <button data-tool="docpdf">Word to PDF <small>print</small></button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <img id="heroLogo" class="hero-logo" src="data:image/jpeg;base64,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AAAAAAAAADVyhtsQbbEG2xBt/cMbWN8AAD9fkbjDG4wxuMMd3pA2McbbEG2xBt9TPAAAHe72GNxhjcYY3GGNxhjn4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//EAAL/2gAMAwEAAgADAAAAIQAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPOOOMMMMMMMMMMMMPPPPMMPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPFLHPPPPPPPPPPPPDDDHDHKPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPLPPPPPPPPPPPPPPPPPPPPPPMPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPKHPNPMMPPFPPONPPNMMMPOPPPFPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPHFPIMPPPLPPOMGPPJMPPPCNPONPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPHFPPDPPPPPPPPPPPPDDDDDHPPFPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPLOPPPPPPPPPPPPPPPPPPPPPPJHPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPDOMMOPPPPPOONPPPPPPMMMLPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPHIHPPONPPFJPPONPPFNLPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPJFPPLCNPPFFPPKGPPLLHPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPMPPPMPKFPPFFPPKPDMPPLLFPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPLDPOJLPLNPOFLPPAPLKHPDDGPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPLPPPLDDDHLDDHPPPPPPPPHPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAFPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPPPPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPPPPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPPPPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPPPPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/EAAL/2gAMAwEAAgADAAAAEPPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/PvPPPPPPPPPPPcMMMMcf/8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A88888888888888888888888o/wD/AP8AnXvvPPPPPPPPPPPfDDDDHfn3/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A88888888888888888888888o/wD/APtf/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A+8v/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wDzzzzzzzzzzzzzzzzzzzzzzyj/AP8A69/9/wD/APzjn/8A9/8A/wDz/wD/APf/AH//AL//AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A88888888888888888888888o/wD/AMtf+9/PPPdf+u8v/wDPT/8A/wDtf+9f/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD7X/v/ADzzz3//AO8//wDv/wD/AP8A/f8A+1//AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A88888888888888888888888o/wD/AO9P/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wDX/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A88888888888888888888888o/wD/AP8AfT//AO//AP8A/wD/APf/AP8A/wD/AP8A88+0x/8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wDjH/8A/wDf+/edf/vf/wDDnP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wDzzzzzzzzzzzzzzzzzzzzzzyj/AP8A/wD/APnP/wD47pv/ANcP/wDTn/8A703/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A88888888888888888888888o/wD/AP8A/j//AP8AMu8L/wDXDX/XvfX/AO4uKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP7/AP8Ar3f7kMMX/wA8+/7+97/LCP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/ADzzz3//AP8APPPf/wD/AO//AP8A7zzzz/8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPKP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP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" alt="Double R logo">
+    <div id="heroText" class="hero-text">
+      <div class="eyebrow">The Ree Haawn workspace</div>
+      <h1>PDF work, refined.</h1>
+      <p>Delete pages, combine documents, and edit your PDF in one dark, distraction-free workspace.</p>
+    </div>
+  </section>
+
+  <section class="tools" aria-label="PDF tools">
+    <button class="tool active" data-mode="delete">
+      <span class="tool-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><path d="M8.2 7.5 20 19M8.2 16.5 20 5M13.2 12l3-3"/></svg>
+      </span>
+      <strong>Delete PDF Pages</strong><small>Inspect large page previews and remove exactly the pages you choose.</small>
+    </button>
+    <button class="tool" data-mode="merge">
+      <span class="tool-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h8l4 4V20H6z"/><path d="M14 3.5V8h4M9 12h6M9 15h6"/><path d="M3 7v14h12"/></svg>
+      </span>
+      <strong>Merge Pages</strong><small>Combine PDFs, inspect every page, and arrange the final page order.</small>
+    </button>
+    <button class="tool" data-mode="edit">
+      <span class="tool-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10l5 5v4"/><path d="M14 4v5h5"/><path d="m5 19 1-4 9.8-9.8a1.8 1.8 0 0 1 2.5 2.5L8.5 18.5 5 19Z"/><path d="M4 21h16"/></svg>
+      </span>
+      <strong>Edit PDF Pages</strong><small>Use a large page editor to add, move, resize, rewrite, or remove objects.</small>
+    </button>
+  </section>
+
+  <section class="workspace">
+    <div class="work-head">
+      <div><h2 id="toolTitle">Delete PDF Pages</h2><p id="toolDescription">Choose a PDF, inspect the page previews, and mark the pages to remove.</p></div>
+      <span class="pill" id="fileCount">No PDF selected</span>
+    </div>
+
+    <div class="drop" id="dropZone">
+      <div class="upload-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 16V4m-4 4 4-4 4 4"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg>
+      </div>
+      <strong id="dropTitle">Drop your PDF here</strong>
+      <p id="dropDescription">Choose a PDF from your device. Your file stays in this browser.</p>
+      <label class="file-label" for="pdfFiles" id="chooseLabel">Choose PDF</label>
+      <input id="pdfFiles" type="file" accept=".pdf,application/pdf,application/octet-stream">
+    </div>
+
+    <div id="singleSummary" class="file-list" hidden></div>
+
+    <section id="extraPanel" class="controls" hidden></section>
+
+    <section id="deletePanel" class="controls" hidden>
+      <div class="section-label"><strong>Page previews</strong><span id="deleteCount">0 pages selected for deletion</span></div>
+      <div id="deleteGallery" class="thumb-grid"></div>
+      <div class="controls">
+        <label class="field-label" for="pageRange">Or enter page numbers / ranges</label>
+        <input id="pageRange" class="text-input" placeholder="Example: 2, 4, 7-9">
+        <p class="hint">Page numbering starts at 1. You can select pages above, enter ranges here, or use both. At least one page must remain.</p>
+        <div class="actions"><button class="btn primary" id="deleteDownload">Delete selected pages · Download</button><button class="btn secondary" id="clearDeleteSelection">Clear selection</button></div>
+      </div>
+    </section>
+
+    <section id="mergePanel" class="controls" hidden>
+      <div class="section-label"><strong>PDF files</strong><span id="mergeFileCount">Add at least two PDFs</span></div>
+      <div id="mergeSources" class="merge-source-list"></div>
+      <div class="actions"><label class="file-label" for="pdfFiles">＋ Add more PDFs</label></div>
+      <div class="section-label"><strong>Combined page order</strong><span id="mergePageCount">0 pages</span></div>
+      <div id="mergeGallery" class="thumb-grid"></div>
+      <div class="controls">
+        <label class="field-label" for="mergeOutputName">Download filename</label>
+        <input id="mergeOutputName" class="text-input" type="text" placeholder="The first PDF's original filename">
+        <p class="hint">The first uploaded PDF's original filename is used by default. You can enter a different name if you want. Use the arrows on page cards to change the combined order.</p>
+        <div class="actions"><button class="btn primary" id="mergeDownload">Merge pages · Download</button></div>
+      </div>
+    </section>
+
+    <section id="editPanel" class="controls" hidden>
+      <div class="section-label"><strong>PDF page editor</strong><span id="editPageCount">Large page view</span></div>
+      <div class="editor-toolbar">
+        <button class="btn primary" id="addText">＋ Add text</button>
+        <label class="file-label" for="imageFile">＋ Add image / signature</label><input id="imageFile" type="file" accept="image/png,image/jpeg">
+        <button class="btn secondary" id="coverArea">▱ Erase / cover text</button>
+        <button class="btn secondary" id="addBlankPage">＋ Blank page</button>
+        <span class="toolbar-divider"></span>
+        <button class="btn secondary" id="rotatePageLeft">↶ Rotate</button>
+        <button class="btn secondary" id="rotatePageRight">↷ Rotate</button>
+        <button class="btn secondary" id="movePageEarlier">← Page earlier</button>
+        <button class="btn secondary" id="movePageLater">Page later →</button>
+        <button class="btn danger" id="deleteCurrentPage">Delete page</button>
+        <span class="toolbar-divider"></span>
+        <button class="btn secondary" id="zoomOut">−</button><button class="btn secondary" id="zoomIn">＋ Zoom</button><button class="btn ghost" id="zoomFit">Fit</button>
+        <button class="btn primary" id="saveEdited">Download PDF</button>
+      </div>
+
+      <div class="object-tools" id="objectTools">
+        <strong id="objectTypeLabel" style="font-size:11px;color:#e8d2a7">Selected object</strong>
+        <button class="btn secondary" id="editText">Rewrite text</button>
+        <button class="btn danger" id="deleteObject">Delete object</button>
+        <span class="toolbar-divider"></span>
+        <label id="fontSizeLabel">Size <input id="fontSize" type="range" min="8" max="72" value="22"></label>
+        <label id="objectColorLabel">Colour <input id="objectColor" type="color" value="#222222"></label>
+        <span class="text-style-group" id="textStyleGroup" hidden>
+          <select id="fontFamily" class="mini-select"><option value="sans">Sans</option><option value="serif">Serif</option><option value="mono">Mono</option></select>
+          <button class="btn secondary" id="styleBold"><b>B</b></button>
+          <button class="btn secondary" id="styleItalic"><i>I</i></button>
+          <button class="btn secondary" id="styleUnderline"><u>U</u></button>
+          <select id="textAlign" class="mini-select"><option value="left">Left</option><option value="center">Centre</option><option value="right">Right</option></select>
+        </span>
+        <span class="hint" id="dragHint" style="margin:0">Drag to move · resize boxes with the corner handle</span>
+      </div>
+
+      <div class="editor-layout">
+        <aside class="filmstrip" id="editThumbs" aria-label="PDF page thumbnails"></aside>
+        <div class="editor-main">
+          <div class="editor-stage" id="editorStage">
+            <div class="page-shell" id="pageShell">
+              <canvas id="pageCanvas"></canvas>
+              <div id="overlayLayer"></div>
+            </div>
+          </div>
+          <div class="editor-foot"><span id="activePageLabel">Select a page</span><span>Click an object to select · double-click text to rewrite · drag to move</span></div>
+        </div>
+      </div>
+      <p class="hint">Added text and images can be selected, moved, resized, rewritten, or deleted. “Cover area” places a movable cover over existing page content so you can visually hide it before adding replacement text. This is not secure PDF redaction; the original underlying content may remain recoverable.</p>
+    </section>
+
+    <div class="status" id="status" aria-live="polite"></div>
+    <div class="privacy">🔒 PDF files are processed locally in your browser. They are not uploaded to Ree Haawn PDF. An internet connection is required to load the PDF processing libraries. Password-protected PDFs and some complex interactive PDF elements may not be supported.</div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="foot-brand">REE-HAAWN PDF EDITS</div>
+  <p class="foot-address">PIN CODE 53700 · LAHORE, PAKISTAN</p>
+  <p class="foot-note">Your files are processed in your browser and never uploaded to our servers.</p>
+  <button class="to-top" id="toTop" type="button">↑ Back to top</button>
+  <p class="foot-copy">© <span id="year"></span> Ree Haawn PDF. All rights reserved.</p>
+</footer>
+
+
+<div class="modal-backdrop" id="textModal">
+  <div class="modal">
+    <h3 id="textModalTitle">Add text</h3>
+    <p>Type the text you want to place on the page. After adding it, drag it to the exact position you need.</p>
+    <textarea id="textValue" class="text-area" rows="4" placeholder="Type your text here..."></textarea>
+    <div class="modal-actions"><button class="btn secondary" id="cancelText">Cancel</button><button class="btn primary" id="confirmText">Apply text</button></div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="blankModal">
+  <div class="modal">
+    <h3>Insert blank page</h3>
+    <p>Choose where the blank page goes and its size. The change is applied when you download.</p>
+    <label class="field-label" for="blankPos">Position</label>
+    <select id="blankPos" class="text-input"><option value="before">Before the current page</option><option value="after">After the current page</option><option value="start">At the start</option><option value="end">At the end</option></select>
+    <label class="field-label" for="blankCount" style="margin-top:12px">Number of pages</label>
+    <input id="blankCount" class="text-input" type="number" min="1" max="20" value="1">
+    <label class="field-label" for="blankSize" style="margin-top:12px">Page size</label>
+    <select id="blankSize" class="text-input"><option value="same">Same as current page</option><option value="a4">A4</option><option value="letter">Letter</option></select>
+    <div class="modal-actions"><button class="btn secondary" id="cancelBlank">Cancel</button><button class="btn primary" id="confirmBlank">Insert</button></div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const BLANK_BASE=100000;
+const TEXT_LH=1.2, TEXT_BASE=0.9465;
+const FONT_CSS={sans:'Helvetica,Arial,sans-serif',serif:'"Times New Roman",Times,serif',mono:'"Courier New",Courier,monospace'};
+const PDF_FONTS={sans:['Helvetica','HelveticaBold','HelveticaOblique','HelveticaBoldOblique'],serif:['TimesRoman','TimesRomanBold','TimesRomanItalic','TimesRomanBoldItalic'],mono:['Courier','CourierBold','CourierOblique','CourierBoldOblique']};
+const isBlank=id=>id>=BLANK_BASE;
+function blankViewport(w,h,scale){return{width:w*scale,height:h*scale,scale:scale,convertToViewportPoint:(x,y)=>[x*scale,(h-y)*scale],convertToPdfPoint:(X,Y)=>[X/scale,h-Y/scale]};}
+function angleAt(vp,X,Y){const a=vp.convertToPdfPoint(X,Y),b=vp.convertToPdfPoint(X+1,Y);return Math.atan2(b[1]-a[1],b[0]-a[0]);}
+
+const state = {
+  mode:'delete', single:null, deleteSelected:new Set(),
+  mergeSources:[], mergePages:[], nextSourceId:1, mergeNameTouched:false,
+  edit:{pageOrder:[],rotations:[],overlays:[],activeOriginal:null,selectedOverlay:null,viewport:null,pdfPage:null,zoom:1,renderToken:0,drag:null}
+};
+const modes = {
+  delete:{title:'Delete PDF Pages',desc:'Choose a PDF, inspect the page previews, and mark the pages to remove.',drop:'Drop your PDF here',dropDesc:'Choose a PDF from your device. Your file stays in this browser.',choose:'Choose PDF'},
+  merge:{title:'Merge Pages',desc:'Add PDFs, inspect their pages, and arrange the combined document.',drop:'Drop your PDF files here',dropDesc:'Choose two or more PDFs. You can reorder individual pages before merging.',choose:'Choose PDFs'},
+  edit:{title:'Edit PDF Pages',desc:'Open a large page editor to add text, images, signatures, and cover areas.',drop:'Drop a PDF to edit',dropDesc:'Choose one PDF. Open a page and edit it in the large workspace.',choose:'Choose PDF'}
+};
+$('year').textContent = new Date().getFullYear();
+if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+let toolId=null,toolFiles=[];
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const PRINT_NOTE='Choose "Save as PDF" as the destination in the print dialog.';
+function downloadBlob(blob,name){const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;a.style.display='none';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);}
+function openPrint(html){
+  const f=document.createElement('iframe');
+  f.style.cssText='position:fixed;left:-10000px;top:0;width:800px;height:1100px;border:0';
+  f.srcdoc=html;
+  document.body.append(f);
+  f.onload=()=>setTimeout(()=>{
+    try{f.contentWindow.focus();f.contentWindow.print();}
+    catch(e){setStatus('The print view could not start. Open the saved HTML file and print it.',true);}
+    setTimeout(()=>f.remove(),120000);
+  },300);
+  return null;
+}
+async function pdfText(file){
+  if(!window.pdfjsLib)throw new Error('The PDF reader did not load. Check your connection and refresh.');
+  const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;
+  const pages=[];
+  for(let i=1;i<=pdf.numPages;i++){
+    const c=await (await pdf.getPage(i)).getTextContent();
+    let text='',lastY=null;
+    for(const it of c.items){const y=it.transform[5];if(lastY!==null&&Math.abs(y-lastY)>2)text+='\n';text+=it.str;lastY=y;}
+    pages.push(text.trim());
+  }
+  return pages;
+}
+async function renderPageToCanvas(pg,scale){
+  const vp=pg.getViewport({scale}),c=document.createElement('canvas');
+  c.width=Math.round(vp.width);c.height=Math.round(vp.height);
+  const cx=c.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,c.width,c.height);
+  await pg.render({canvasContext:cx,viewport:vp}).promise;
+  return c;
+}
+const toBlobJpeg=(c,q)=>new Promise(r=>c.toBlob(r,'image/jpeg',q));
+const pdfOut=bytes=>new Blob([bytes],{type:'application/pdf'});
+const pdfJpgOpts=[['1','Standard (72 dpi)'],['2','High (144 dpi)'],['3','Very high (216 dpi)']];
+const TOOLS={
+ rotate:{title:'Rotate PDF',desc:'Rotate every page, or only the pages you list.',test:/\.pdf$/i,types:'a PDF file',accept:'.pdf,application/pdf',drop:'Drop your PDF here',hint:'Choose a PDF from your device.',choose:'Choose PDF',
+  options:[{k:'deg',label:'Rotation',type:'select',opts:[['90','90° clockwise'],['180','180°'],['270','90° counter-clockwise']],value:'90'},{k:'pages',label:'Pages (blank = all, e.g. 2, 4-6)',type:'text',value:''}],
+  run:async([f],o)=>{
+    const doc=await PDFLib.PDFDocument.load(await f.arrayBuffer(),{ignoreEncryption:true});
+    const idx=o.pages.trim()?[...parsePageRanges(o.pages,doc.getPageCount())]:doc.getPageIndices();
+    idx.forEach(i=>{const p=doc.getPage(i);p.setRotation(PDFLib.degrees((p.getRotation().angle+Number(o.deg))%360));});
+    return{blob:pdfOut(await doc.save()),name:f.name};}},
+ crop:{title:'Crop PDF',desc:'Drag the box or its corners over the page. The same crop is applied to every page.',preview:true,test:/\.pdf$/i,types:'a PDF file',accept:'.pdf,application/pdf',drop:'Drop your PDF here',hint:'Choose a PDF from your device.',choose:'Choose PDF',button:'Crop & download',
+  note:'Only the area inside the box is kept. The cropped-away content stays in the file but is hidden.',
+  options:[],
+  run:async([f])=>{
+    if(!window.pdfjsLib)throw new Error('The PDF reader did not load. Check your connection and refresh.');
+    if(!crop.pdf)throw new Error('Wait for the page preview to load first.');
+    const bytes=new Uint8Array(await f.arrayBuffer());
+    const doc=await PDFLib.PDFDocument.load(bytes.slice(),{ignoreEncryption:true});
+    const pdf=await pdfjsLib.getDocument({data:bytes.slice()}).promise;
+    for(let i=1;i<=pdf.numPages;i++){
+      const vp=(await pdf.getPage(i)).getViewport({scale:1}),W=vp.width,H=vp.height;
+      const pts=[[crop.fx,crop.fy],[crop.fx+crop.fw,crop.fy],[crop.fx,crop.fy+crop.fh],[crop.fx+crop.fw,crop.fy+crop.fh]].map(([x,y])=>vp.convertToPdfPoint(x*W,y*H));
+      const xs=pts.map(q=>q[0]),ys=pts.map(q=>q[1]),x0=Math.min(...xs),y0=Math.min(...ys);
+      doc.getPage(i-1).setCropBox(x0,y0,Math.max(...xs)-x0,Math.max(...ys)-y0);
+    }
+    return{blob:pdfOut(await doc.save()),name:f.name};}},
+ blank:{title:'Insert Blank Pages',desc:'Add blank pages at the start, at the end, or after a chosen page.',test:/\.pdf$/i,types:'a PDF file',accept:'.pdf,application/pdf',drop:'Drop your PDF here',hint:'Choose a PDF from your device.',choose:'Choose PDF',
+  options:[{k:'where',label:'Insert',type:'select',opts:[['start','At the start'],['after','After page number'],['end','At the end']],value:'end'},{k:'at',label:'Page number (for "After")',type:'number',value:1},{k:'count',label:'Number of blank pages',type:'number',value:1},{k:'size',label:'Page size',type:'select',opts:[['same','Same as first page'],['a4','A4'],['letter','Letter']],value:'same'}],
+  run:async([f],o)=>{
+    const doc=await PDFLib.PDFDocument.load(await f.arrayBuffer(),{ignoreEncryption:true});
+    const n=doc.getPageCount(),cnt=Math.min(20,Math.max(1,Number(o.count)||1)),first=doc.getPage(0).getSize();
+    const [w,h]=o.size==='a4'?[595.28,841.89]:o.size==='letter'?[612,792]:[first.width,first.height];
+    const at=o.where==='start'?0:o.where==='end'?n:Math.min(n,Math.max(0,Number(o.at)||0));
+    for(let i=0;i<cnt;i++)doc.insertPage(at+i,[w,h]);
+    return{blob:pdfOut(await doc.save()),name:f.name};}},
+ bates:{title:'Bates Numbering',desc:'Stamp sequential numbers on every page.',test:/\.pdf$/i,types:'a PDF file',accept:'.pdf,application/pdf',drop:'Drop your PDF here',hint:'Choose a PDF from your device.',choose:'Choose PDF',
+  options:[{k:'prefix',label:'Prefix',type:'text',value:'DOC'},{k:'start',label:'Start number',type:'number',value:1},{k:'digits',label:'Digits',type:'number',value:6},{k:'suffix',label:'Suffix',type:'text',value:''},{k:'pos',label:'Position',type:'select',opts:[['br','Bottom right'],['bc','Bottom centre'],['bl','Bottom left'],['tr','Top right']],value:'br'},{k:'size',label:'Font size',type:'number',value:10}],
+  run:async([f],o)=>{
+    const doc=await PDFLib.PDFDocument.load(await f.arrayBuffer(),{ignoreEncryption:true});
+    const font=await doc.embedFont(PDFLib.StandardFonts.Helvetica),size=Number(o.size)||10,m=36;
+    let n=Number(o.start)||1;
+    doc.getPages().forEach(p=>{
+      const {width:W,height:H}=p.getSize(),label=o.prefix+String(n).padStart(Number(o.digits)||1,'0')+o.suffix;n++;
+      const tw=font.widthOfTextAtSize(label,size);
+      const x=o.pos==='bl'?m:o.pos==='bc'?(W-tw)/2:W-m-tw,y=o.pos==='tr'?H-m:m;
+      p.drawText(label,{x,y,size,font,color:PDFLib.rgb(0,0,0)});
+    });
+    return{blob:pdfOut(await doc.save()),name:f.name};}},
+ compress:{title:'Compress PDF',desc:'Low re-saves the file. Medium and High shrink large scans by rebuilding pages as images.',test:/\.pdf$/i,types:'a PDF file',accept:'.pdf,application/pdf',drop:'Drop your PDF here',hint:'Choose a PDF from your device.',choose:'Choose PDF',
+  note:'Medium and High rebuild each page as an image, so its text can no longer be selected.',
+  options:[{k:'level',label:'Level',type:'select',opts:[['low','Low (keeps text)'],['medium','Medium (images)'],['high','High (images, smallest)']],value:'low'}],
+  run:async([f],o)=>{
+    if(o.level==='low'){const doc=await PDFLib.PDFDocument.load(await f.arrayBuffer(),{ignoreEncryption:true});return{blob:pdfOut(await doc.save({useObjectStreams:true})),name:f.name};}
+    if(!window.pdfjsLib)throw new Error('The PDF reader did not load. Check your connection and refresh.');
+    const cfg=o.level==='high'?{scale:1.2,q:.6}:{scale:1.5,q:.8};
+    const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await f.arrayBuffer())}).promise;
+    const out=await PDFLib.PDFDocument.create();
+    for(let i=1;i<=pdf.numPages;i++){
+      setStatus(`Compressing page ${i} of ${pdf.numPages}…`);
+      const pg=await pdf.getPage(i),base=pg.getViewport({scale:1});
+      const img=await out.embedJpg(new Uint8Array(await (await toBlobJpeg(await renderPageToCanvas(pg,cfg.scale),cfg.q)).arrayBuffer()));
+      out.addPage([base.width,base.height]);
+      out.getPage(out.getPageCount()-1).drawImage(img,{x:0,y:0,width:base.width,height:base.height});
+    }
+    return{blob:pdfOut(await out.save()),name:f.name};}},
+ pdfjpg:{title:'PDF to JPG',desc:'Each page becomes a JPG image. The pages download together as one ZIP.',test:/\.pdf$/i,types:'a PDF file',accept:'.pdf,application/pdf',drop:'Drop your PDF here',hint:'Choose a PDF from your device.',choose:'Choose PDF',
+  options:[{k:'scale',label:'Resolution',type:'select',opts:pdfJpgOpts,value:'2'},{k:'q',label:'Quality',type:'select',opts:[['0.92','High quality'],['0.75','Medium'],['0.5','Small file']],value:'0.92'}],
+  run:async([f],o)=>{
+    if(!window.JSZip)throw new Error('The ZIP library did not load. Check your connection and refresh.');
+    if(!window.pdfjsLib)throw new Error('The PDF reader did not load. Check your connection and refresh.');
+    const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await f.arrayBuffer())}).promise;
+    const zip=new JSZip(),base=f.name.replace(/\.pdf$/i,'');
+    for(let i=1;i<=pdf.numPages;i++){
+      setStatus(`Converting page ${i} of ${pdf.numPages}…`);
+      zip.file(`${base}-page-${i}.jpg`,await toBlobJpeg(await renderPageToCanvas(await pdf.getPage(i),Number(o.scale)),Number(o.q)));
+    }
+    return{blob:await zip.generateAsync({type:'blob'}),name:`${base}-jpg.zip`};}},
+ pdftxt:{title:'PDF to Text',desc:'Extract the text of every page into a .txt file.',test:/\.pdf$/i,types:'a PDF file',accept:'.pdf,application/pdf',drop:'Drop your PDF here',hint:'Choose a PDF from your device.',choose:'Choose PDF',
+  note:'Scanned PDFs contain images, not text, so they will come out empty.',
+  run:async([f])=>{
+    const pages=await pdfText(f);
+    return{blob:new Blob([pages.map((t,i)=>`--- Page ${i+1} ---\n${t}`).join('\n\n')],{type:'text/plain'}),name:f.name.replace(/\.pdf$/i,'')+'.txt'};}},
+ pdfword:{title:'PDF to Word (basic)',desc:'Exports the text of each page as a Word-compatible .doc file.',test:/\.pdf$/i,types:'a PDF file',accept:'.pdf,application/pdf',drop:'Drop your PDF here',hint:'Choose a PDF from your device.',choose:'Choose PDF',
+  note:'Basic export: text only. Images, tables and exact layout are not preserved. Full conversion needs a server.',
+  run:async([f])=>{
+    const pages=await pdfText(f);
+    const body=pages.map((t,i)=>`<h3>Page ${i+1}</h3>`+t.split('\n').map(l=>`<p>${esc(l)||'&nbsp;'}</p>`).join('')).join('');
+    const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"></head><body style="font-family:Calibri,Arial,sans-serif">${body}</body></html>`;
+    return{blob:new Blob(['\ufeff',html],{type:'application/msword'}),name:f.name.replace(/\.pdf$/i,'')+'.doc'};}},
+ jpgpdf:{title:'JPG to PDF',desc:'Combine images into one PDF, one image per page.',test:/\.(jpe?g|png)$/i,types:'JPG or PNG images',accept:'.jpg,.jpeg,.png,image/jpeg,image/png',multi:true,drop:'Drop your images here',hint:'Choose one or more JPG or PNG images.',choose:'Choose images',
+  options:[{k:'size',label:'Page size',type:'select',opts:[['a4','A4'],['letter','Letter'],['fit','Fit to image']],value:'a4'},{k:'orient',label:'Orientation',type:'select',opts:[['portrait','Portrait'],['landscape','Landscape']],value:'portrait'},{k:'margin',label:'Margin (pt)',type:'number',value:24}],
+  run:async(files,o)=>{
+    const doc=await PDFLib.PDFDocument.create(),m=Number(o.margin)||0;
+    for(const f of files){
+      const bytes=new Uint8Array(await f.arrayBuffer());
+      const img=/\.png$/i.test(f.name)?await doc.embedPng(bytes):await doc.embedJpg(bytes);
+      let pw=612,ph=792;
+      if(o.size==='fit'){pw=img.width+2*m;ph=img.height+2*m;}
+      else{if(o.size==='a4'){pw=595.28;ph=841.89;}if(o.orient==='landscape'){[pw,ph]=[ph,pw];}}
+      const page=doc.addPage([pw,ph]);
+      const sc=Math.min((pw-2*m)/img.width,(ph-2*m)/img.height),w=img.width*sc,h=img.height*sc;
+      page.drawImage(img,{x:(pw-w)/2,y:(ph-h)/2,width:w,height:h});
+    }
+    return{blob:pdfOut(await doc.save()),name:files[0].name.replace(/\.[^.]+$/,'')+'.pdf'};}},
+ htmlpdf:{title:'HTML to PDF',desc:'Opens your HTML in a print view.',test:/\.html?$/i,types:'an HTML file',accept:'.html,.htm,text/html',drop:'Drop your HTML file here',hint:'Choose an .html file from your device.',choose:'Choose HTML',
+  note:PRINT_NOTE,button:'Open print view',
+  run:async([f])=>openPrint(await f.text())},
+ docpdf:{title:'Word to PDF',desc:'Converts the .docx text and images, then opens the print view.',test:/\.docx$/i,types:'a .docx file',accept:'.docx',drop:'Drop your Word file here',hint:'Choose a .docx file from your device.',choose:'Choose DOCX',
+  note:'Layout is approximate. '+PRINT_NOTE,button:'Open print view',
+  run:async([f])=>{
+    if(!window.mammoth)throw new Error('The Word converter did not load. Check your connection and refresh.');
+    const r=await mammoth.convertToHtml({arrayBuffer:await f.arrayBuffer()});
+    return openPrint(`<!doctype html><html><head><meta charset="utf-8"><title>${esc(f.name)}</title><style>@page{size:A4}body{font-family:Georgia,serif;line-height:1.5;max-width:700px;margin:40px auto;color:#111}img{max-width:100%}</style></head><body>${r.value}</body></html>`);}}
+};
+const crop={pdf:null,page:1,n:0,fx:0,fy:0,fw:1,fh:1,bw:612,bh:792};
+const MIN_CROP=0.03;
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+function buildCropUI(){
+  const box=document.createElement('div');
+  box.className='crop-ui';
+  box.innerHTML=`<div class="tb" style="margin-bottom:10px"><button class="btn secondary" id="cropPrev">‹</button><span class="hint" id="cropPg" style="margin:0"></span><button class="btn secondary" id="cropNext">›</button><span class="sep"></span><button class="btn ghost" id="cropReset">Reset box</button></div><div class="crop-stage" id="cropStage"><div class="crop-wrap" id="cropWrap"><canvas id="cropCanvas"></canvas><div class="crop-box" id="cropBox"><span data-h="nw"></span><span data-h="ne"></span><span data-h="sw"></span><span data-h="se"></span></div></div></div><p class="hint" id="cropInfo">Choose a PDF to see its first page here.</p>`;
+  box.querySelector('#cropPrev').onclick=()=>{if(crop.page>1){crop.page--;cropRender();}};
+  box.querySelector('#cropNext').onclick=()=>{if(crop.page<crop.n){crop.page++;cropRender();}};
+  box.querySelector('#cropReset').onclick=()=>{Object.assign(crop,{fx:0,fy:0,fw:1,fh:1});updateCropBox();};
+  box.querySelector('#cropBox').addEventListener('pointerdown',cropDrag);
+  return box;
+}
+function cropDrag(e){
+  const h=e.target.dataset.h||'move';
+  const box=$('cropBox'),r=$('cropWrap').getBoundingClientRect();
+  const s={x:e.clientX,y:e.clientY,fx:crop.fx,fy:crop.fy,fw:crop.fw,fh:crop.fh};
+  e.preventDefault();
+  box.setPointerCapture(e.pointerId);
+  const move=ev=>{
+    const dx=(ev.clientX-s.x)/r.width,dy=(ev.clientY-s.y)/r.height;
+    let {fx,fy,fw,fh}=s;
+    if(h==='move'){fx=clamp(fx+dx,0,1-fw);fy=clamp(fy+dy,0,1-fh);}
+    else{
+      if(h.includes('w')){const nx=clamp(fx+dx,0,fx+fw-MIN_CROP);fw=fx+fw-nx;fx=nx;}
+      if(h.includes('e'))fw=clamp(fw+dx,MIN_CROP,1-fx);
+      if(h.includes('n')){const ny=clamp(fy+dy,0,fy+fh-MIN_CROP);fh=fy+fh-ny;fy=ny;}
+      if(h.includes('s'))fh=clamp(fh+dy,MIN_CROP,1-fy);
+    }
+    Object.assign(crop,{fx,fy,fw,fh});updateCropBox();
+  };
+  const up=()=>{box.removeEventListener('pointermove',move);box.removeEventListener('pointerup',up);box.removeEventListener('pointercancel',up);};
+  box.addEventListener('pointermove',move);box.addEventListener('pointerup',up);box.addEventListener('pointercancel',up);
+}
+function updateCropBox(){
+  const b=$('cropBox');if(!b)return;
+  Object.assign(b.style,{left:(crop.fx*100)+'%',top:(crop.fy*100)+'%',width:(crop.fw*100)+'%',height:(crop.fh*100)+'%'});
+  const pt=v=>Math.round(v);
+  $('cropInfo').textContent=`Keep ${pt(crop.fw*crop.bw)} × ${pt(crop.fh*crop.bh)} pt. Trim: left ${pt(crop.fx*crop.bw)}, top ${pt(crop.fy*crop.bh)}, right ${pt((1-crop.fx-crop.fw)*crop.bw)}, bottom ${pt((1-crop.fy-crop.fh)*crop.bh)} pt (page ${crop.page} of ${crop.n}).`;
+  $('cropPg').textContent=`Page ${crop.page} of ${crop.n}`;
+}
+async function cropRender(){
+  if(!crop.pdf)return;
+  const pg=await crop.pdf.getPage(crop.page),base=pg.getViewport({scale:1});
+  crop.bw=base.width;crop.bh=base.height;
+  const maxW=Math.max(240,Math.min(760,$('cropStage').clientWidth-40));
+  const vp=pg.getViewport({scale:Math.min(maxW/base.width,620/base.height)}),cv=$('cropCanvas'),dpr=Math.min(window.devicePixelRatio||1,2);
+  cv.width=Math.round(vp.width*dpr);cv.height=Math.round(vp.height*dpr);
+  cv.style.width=vp.width+'px';cv.style.height=vp.height+'px';
+  $('cropWrap').style.width=vp.width+'px';$('cropWrap').style.height=vp.height+'px';
+  await pg.render({canvasContext:cv.getContext('2d'),viewport:vp,transform:[dpr,0,0,dpr,0,0],background:'rgb(255,255,255)'}).promise;
+  updateCropBox();
+}
+async function cropLoad(file){
+  if(!window.pdfjsLib)throw new Error('The PDF reader did not load. Check your connection and refresh.');
+  crop.pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;
+  Object.assign(crop,{page:1,n:crop.pdf.numPages,fx:0,fy:0,fw:1,fh:1});
+  await cropRender();
+}
+function openTool(id){
+  const t=TOOLS[id];
+  toolId=id;toolFiles=[];
+  ['deletePanel','mergePanel','editPanel'].forEach(p=>$(p).hidden=true);
+  resetWorkspace();
+  document.querySelectorAll('.tool').forEach(b=>b.classList.remove('active'));
+  state.mode='tool';
+  $('toolTitle').textContent=t.title;$('toolDescription').textContent=t.desc;
+  $('dropTitle').textContent=t.drop;$('dropDescription').textContent=t.hint;$('chooseLabel').textContent=t.choose;
+  $('pdfFiles').multiple=!!t.multi;$('pdfFiles').accept=t.accept;
+  const p=$('extraPanel');p.hidden=false;p.replaceChildren();
+  const list=document.createElement('div');list.id='extraList';list.className='file-list';
+  const grid=document.createElement('div');grid.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:16px 0';
+  (t.options||[]).forEach(o=>{
+    const wrap=document.createElement('div'),lab=document.createElement('label');lab.className='field-label';lab.textContent=o.label;
+    let el;
+    if(o.type==='select'){el=document.createElement('select');o.opts.forEach(([v,l])=>el.append(new Option(l,v)));}
+    else{el=document.createElement('input');el.type=o.type;}
+    el.className='text-input';el.dataset.k=o.k;el.value=o.value;
+    wrap.append(lab,el);grid.append(wrap);
+  });
+  const run=document.createElement('button');run.id='extraRun';run.className='btn primary';run.textContent=t.button||'Process & download';run.disabled=true;run.onclick=runTool;
+  const note=document.createElement('p');note.className='hint';note.textContent=t.note||'Files are processed in your browser and are not uploaded.';
+  p.append(list,...(t.preview?[buildCropUI()]:[]),grid,run,note);
+  renderToolFiles();
+}
+async function handleToolFiles(list){
+  const t=TOOLS[toolId];
+  const ok=[];
+  for(const f of list){if(t.test.test(f.name)||(t.types==='a PDF file'&&await isPdfFile(f)))ok.push(f);}
+  if(!ok.length){setStatus(`Please choose ${t.types}.`,true);return;}
+  if(t.multi)toolFiles=[...toolFiles,...ok];
+  else{toolFiles=[ok[0]];if(ok.length>1)setStatus('Only the first file is used by this tool.');}
+  renderToolFiles();
+  if(t.preview&&toolFiles.length)cropLoad(toolFiles[0]).catch(e=>setStatus(e.message||'Could not open the page preview.',true));
+}
+function renderToolFiles(){
+  const box=$('extraList');if(!box)return;box.replaceChildren();
+  toolFiles.forEach((f,i)=>{
+    const row=document.createElement('div');row.className='file-row';
+    const info=document.createElement('div'),name=document.createElement('div'),sub=document.createElement('div');
+    name.className='file-title';name.textContent=f.name;sub.className='file-sub';sub.textContent=`${(f.size/1048576).toFixed(2)} MB`;
+    info.append(name,sub);
+    const rm=document.createElement('button');rm.className='btn danger';rm.textContent='Remove';
+    rm.onclick=()=>{toolFiles.splice(i,1);renderToolFiles();};
+    row.append(info,rm);box.append(row);
+  });
+  $('fileCount').textContent=toolFiles.length?`${toolFiles.length} file(s) selected`:'No file selected';
+  if($('extraRun'))$('extraRun').disabled=!toolFiles.length;
+}
+async function runTool(){
+  const t=TOOLS[toolId];if(!t||!toolFiles.length)return;
+  const o={};document.querySelectorAll('#extraPanel [data-k]').forEach(el=>{o[el.dataset.k]=el.value;});
+  $('extraRun').disabled=true;setStatus('Working… large files can take a moment.');
+  try{
+    if(!window.PDFLib)throw new Error('PDF library did not load. Check your connection and refresh.');
+    const result=await t.run(t.multi?toolFiles:[toolFiles[0]],o);
+    if(result){downloadBlob(result.blob,result.name);setStatus(`Done. Downloaded ${result.name}.`);}
+    else setStatus('The print view is open. '+PRINT_NOTE);
+  }catch(error){setStatus(error.message||'Processing failed. The file may be damaged or protected.',true);}
+  finally{$('extraRun').disabled=!toolFiles.length;}
+}
+function setStatus(message, error=false) {
+  $('status').textContent = message || '';
+  $('status').className = 'status' + (error ? ' error' : '');
+}
+function setMode(mode) {
+  $('extraPanel').hidden=true;toolId=null;toolFiles=[];
+  state.mode = mode;
+  document.querySelectorAll('.tool').forEach(button => button.classList.toggle('active', button.dataset.mode === mode));
+  const config = modes[mode];
+  $('toolTitle').textContent = config.title;
+  $('toolDescription').textContent = config.desc;
+  $('dropTitle').textContent = config.drop;
+  $('dropDescription').textContent = config.dropDesc;
+  $('chooseLabel').textContent = config.choose;
+  $('pdfFiles').multiple = mode === 'merge';
+  $('deletePanel').hidden = true;
+  $('mergePanel').hidden = true;
+  $('editPanel').hidden = true;
+  resetWorkspace();
+}
+function resetWorkspace() {
+  $('deletePanel').hidden = true;
+  $('mergePanel').hidden = true;
+  $('editPanel').hidden = true;
+  state.single = null;
+  state.deleteSelected.clear();
+  state.mergeSources = [];
+  state.mergePages = [];
+  state.nextSourceId = 1;
+  state.mergeNameTouched = false;
+  state.edit = {pageOrder:[],rotations:[],overlays:[],activeOriginal:null,selectedOverlay:null,viewport:null,pdfPage:null,zoom:1,renderToken:0,drag:null};
+  $('singleSummary').innerHTML = '';
+  $('singleSummary').hidden = true;
+  $('deleteGallery').innerHTML = '';
+  $('pageRange').value = '';
+  $('mergeSources').innerHTML = '';
+  $('mergeGallery').innerHTML = '';
+  $('mergeOutputName').value = '';
+  $('editThumbs').innerHTML = '';
+  $('overlayLayer').innerHTML = '';
+  $('pageCanvas').width = 0;
+  $('pageCanvas').height = 0;
+  $('pageShell').style.width = '0px';
+  $('pageShell').style.height = '0px';
+  $('fileCount').textContent = 'No PDF selected';
+  $('deleteCount').textContent = '0 pages selected for deletion';
+  $('mergeFileCount').textContent = 'Add at least two PDFs';
+  $('mergePageCount').textContent = '0 pages';
+  $('editPageCount').textContent = 'Large page view';
+  $('activePageLabel').textContent = 'Select a page';
+  $('objectTools').classList.remove('visible');
+  $('pdfFiles').value = '';
+  setStatus('');
+}
+function checkLibraries() {
+  if (!window.PDFLib || !window.pdfjsLib) throw new Error('PDF libraries could not load. Check your internet connection and refresh this page.');
+}
+async function readPdf(file) {
+  checkLibraries();
+  const bytes = new Uint8Array(await file.arrayBuffer());
+  let libDoc, pdfjsDoc;
+  try { libDoc = await PDFLib.PDFDocument.load(bytes, {ignoreEncryption:true}); }
+  catch (error) { throw new Error(`${file.name} could not be read. The file may be damaged.`); }
+  try { pdfjsDoc = await pdfjsLib.getDocument({data:bytes.slice()}).promise; }
+  catch (error) {
+    if (error && error.name === 'PasswordException') throw new Error(`${file.name} is password-protected. Remove the password, then try again.`);
+    throw new Error(`${file.name} could not be opened. The file may be damaged.`);
+  }
+  return {file,bytes,libDoc,pdfjsDoc,pageCount:libDoc.getPageCount()};
+}
+function showSingleSummary(item) {
+  $('singleSummary').hidden = false;
+  $('singleSummary').innerHTML = '';
+  const row = document.createElement('div');
+  row.className = 'file-row';
+  const info = document.createElement('div');
+  const name = document.createElement('div'); name.className='file-title'; name.textContent=item.file.name;
+  const sub = document.createElement('div'); sub.className='file-sub'; sub.textContent=`${item.pageCount} pages · ${(item.file.size/1048576).toFixed(2)} MB`;
+  info.append(name,sub);
+  const remove = document.createElement('button'); remove.className='btn danger'; remove.textContent='Remove PDF';
+  remove.onclick=()=>{resetWorkspace();};
+  row.append(info,remove); $('singleSummary').append(row);
+  $('fileCount').textContent = `${item.pageCount} pages`;
+}
+async function isPdfFile(file){
+  if(file.type==='application/pdf'||/\.pdf$/i.test(file.name))return true;
+  const head=new Uint8Array(await file.slice(0,5).arrayBuffer());
+  return String.fromCharCode(...head)==='%PDF-';
+}
+async function handleFiles(fileList) {
+  if(state.mode==='tool'){handleToolFiles([...fileList]);return;}
+  const files = []; for (const file of [...fileList]) { if (await isPdfFile(file)) files.push(file); }
+  if (!files.length) { setStatus('Please choose a valid PDF file.',true); return; }
+  try {
+    checkLibraries();
+    if (state.mode === 'merge') {
+      for (const file of files) {
+        setStatus(`Opening ${file.name}…`);
+        const source = await readPdf(file);
+        source.id = state.nextSourceId++;
+        state.mergeSources.push(source);
+        for (let i=0;i<source.pageCount;i++) state.mergePages.push({sourceId:source.id,index:i});
+      }
+      if (!state.mergeNameTouched && state.mergeSources.length) $('mergeOutputName').value = state.mergeSources[0].file.name;
+      $('mergePanel').hidden = false;
+      renderMerge();
+      setStatus(`${files.length} PDF file(s) added. Use the page arrows to arrange the final document.`);
+    } else {
+      if (files.length > 1) setStatus('Only the first selected PDF will be opened in this tool.');
+      setStatus(`Opening ${files[0].name}…`);
+      state.single = await readPdf(files[0]);
+      showSingleSummary(state.single);
+      if (state.mode === 'delete') {
+        state.deleteSelected.clear();
+        $('deletePanel').hidden = false;
+        renderDeleteGallery();
+        setStatus(`Ready. This PDF contains ${state.single.pageCount} pages.`);
+      } else {
+        $('editPanel').hidden = false;
+        initEditor();
+        await renderEditThumbs();
+        await renderActivePage();
+        setStatus('Editor ready. Select a page, then add or select objects to edit them.');
+      }
+    }
+  } catch (error) {
+    setStatus(error && error.message ? error.message : 'Could not open this PDF.',true);
+  } finally {
+    $('pdfFiles').value = '';
+  }
+}
+function addLazyThumbnails(container, resolver, maxWidth, maxHeight) {
+  const canvases = [...container.querySelectorAll('canvas[data-page-index]')];
+  const renderOne = canvas => {
+    if (canvas.dataset.rendered === 'yes' || canvas.dataset.rendering === 'yes') return;
+    const doc = resolver(canvas);
+    if (!doc) return;
+    canvas.dataset.rendering = 'yes';
+    renderThumbnail(doc, Number(canvas.dataset.pageIndex), canvas, maxWidth, maxHeight)
+      .then(()=>{canvas.dataset.rendered='yes';})
+      .catch(()=>{canvas.dataset.rendered='error';canvas.parentElement.classList.add('thumb-failed');});
+  };
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{if(entry.isIntersecting){observer.unobserve(entry.target);renderOne(entry.target);}});
+    },{root:container,rootMargin:'220px'});
+    canvases.forEach(canvas=>observer.observe(canvas));
+  } else canvases.forEach(renderOne);
+}
+async function renderThumbnail(doc, pageIndex, canvas, maxWidth=210, maxHeight=255) {
+  const page = await doc.getPage(pageIndex+1);
+  const base = page.getViewport({scale:1});
+  const scale = Math.min(maxWidth/base.width,maxHeight/base.height);
+  const viewport = page.getViewport({scale});
+  const dpr = Math.min(window.devicePixelRatio || 1,2);
+  canvas.width = Math.max(1,Math.round(viewport.width*dpr));
+  canvas.height = Math.max(1,Math.round(viewport.height*dpr));
+  canvas.style.width = `${viewport.width}px`;
+  canvas.style.height = `${viewport.height}px`;
+  const context = canvas.getContext('2d',{alpha:false});
+  await page.render({canvasContext:context,viewport,transform:[dpr,0,0,dpr,0,0],background:'rgb(255,255,255)'}).promise;
+}
+
+function renderDeleteGallery() {
+  const gallery = $('deleteGallery'); gallery.innerHTML='';
+  for (let i=0;i<state.single.pageCount;i++) {
+    const card = document.createElement('div');
+    card.className = 'page-card' + (state.deleteSelected.has(i)?' selected':'');
+    card.dataset.index = i;
+    const wrap = document.createElement('div'); wrap.className='thumb-wrap';
+    const canvas = document.createElement('canvas'); canvas.dataset.pageIndex=i;
+    wrap.append(canvas);
+    const foot = document.createElement('div'); foot.className='page-card-foot';
+    const info = document.createElement('div');
+    const title = document.createElement('div'); title.className='page-card-title'; title.textContent=`Page ${i+1}`;
+    const sub = document.createElement('div'); sub.className='page-card-sub'; sub.textContent='Select to delete';
+    info.append(title,sub);
+    const label = document.createElement('label'); label.className='check-wrap';
+    const check = document.createElement('input'); check.type='checkbox'; check.className='page-check'; check.checked=state.deleteSelected.has(i);
+    check.addEventListener('change',()=>toggleDeletePage(i,check.checked));
+    label.append(check,document.createTextNode('Delete'));
+    foot.append(info,label); card.append(wrap,foot);
+    card.addEventListener('click',event=>{if(event.target.closest('label'))return;toggleDeletePage(i,!state.deleteSelected.has(i));});
+    gallery.append(card);
+  }
+  addLazyThumbnails(gallery,()=>state.single.pdfjsDoc,220,255);
+  updateDeleteCount();
+}
+function toggleDeletePage(index, selected) {
+  selected ? state.deleteSelected.add(index) : state.deleteSelected.delete(index);
+  const card = $('deleteGallery').querySelector(`[data-index="${index}"]`);
+  if (card) {
+    card.classList.toggle('selected',selected);
+    const check=card.querySelector('input[type=checkbox]'); if(check) check.checked=selected;
+  }
+  updateDeleteCount();
+}
+function updateDeleteCount() {
+  $('deleteCount').textContent = `${state.deleteSelected.size} page(s) selected for deletion`;
+}
+function parsePageRanges(value,max) {
+  const result=new Set();
+  const parts=value.split(',').map(part=>part.trim()).filter(Boolean);
+  for (const part of parts) {
+    if (/^\d+$/.test(part)) {
+      const n=Number(part); if(n<1||n>max) throw new Error(`Page ${n} is outside the valid range (1–${max}).`);
+      result.add(n-1);
+    } else if (/^\d+\s*-\s*\d+$/.test(part)) {
+      const [a,b]=part.split('-').map(Number);
+      if(a<1||b>max||a>b) throw new Error(`Invalid page range: ${part}`);
+      for(let n=a;n<=b;n++) result.add(n-1);
+    } else throw new Error(`Invalid page entry: ${part}`);
+  }
+  return result;
+}
+async function downloadPdf(doc,filename) {
+  const bytes=await doc.save();
+  const blob=new Blob([bytes],{type:'application/pdf'});
+  const url=URL.createObjectURL(blob);
+  const anchor=document.createElement('a');
+  anchor.href=url;
+  anchor.download=filename;
+  anchor.style.display='none';
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),4000);
+  return filename;
+}
+$('deleteDownload').addEventListener('click',async()=>{
+  try {
+    if(!state.single) throw new Error('Choose a PDF first.');
+    const remove=new Set(state.deleteSelected);
+    for(const index of parsePageRanges($('pageRange').value,state.single.pageCount)) remove.add(index);
+    if(!remove.size) throw new Error('Select at least one page or enter page numbers to delete.');
+    if(remove.size>=state.single.pageCount) throw new Error('At least one page must remain in the PDF.');
+    const keep=Array.from({length:state.single.pageCount},(_,i)=>i).filter(i=>!remove.has(i));
+    const out=await PDFLib.PDFDocument.create();
+    const copied=await out.copyPages(state.single.libDoc,keep);
+    copied.forEach(page=>out.addPage(page));
+    const originalName=state.single.file.name;
+    await downloadPdf(out,originalName);
+    setStatus(`Done. ${remove.size} page(s) removed. Download filename preserved: ${originalName}`);
+  } catch(error) {setStatus(error.message,true);}
+});
+$('clearDeleteSelection').addEventListener('click',()=>{
+  state.deleteSelected.clear();$('pageRange').value='';
+  $('deleteGallery').querySelectorAll('.page-card').forEach(card=>{card.classList.remove('selected');const c=card.querySelector('input');if(c)c.checked=false;});
+  updateDeleteCount();setStatus('Page selection cleared.');
+});
+
+function renderMerge() {
+  renderMergeSources();
+  renderMergeGallery();
+  $('mergeFileCount').textContent=`${state.mergeSources.length} file(s) added`;
+  $('mergePageCount').textContent=`${state.mergePages.length} page(s) in output order`;
+  $('fileCount').textContent=`${state.mergeSources.length} PDFs · ${state.mergePages.length} pages`;
+}
+function renderMergeSources() {
+  const list=$('mergeSources');list.innerHTML='';
+  state.mergeSources.forEach((source,index)=>{
+    const row=document.createElement('div');row.className='merge-source';
+    const info=document.createElement('div');
+    const name=document.createElement('div');name.className='merge-source-name';name.textContent=`${index+1}. ${source.file.name}`;
+    const sub=document.createElement('div');sub.className='merge-source-pages';sub.textContent=`${source.pageCount} pages`;
+    info.append(name,sub);
+    const remove=document.createElement('button');remove.className='btn danger';remove.textContent='Remove file';
+    remove.addEventListener('click',()=>{
+      state.mergeSources=state.mergeSources.filter(item=>item.id!==source.id);
+      state.mergePages=state.mergePages.filter(item=>item.sourceId!==source.id);
+      if(!state.mergeNameTouched) $('mergeOutputName').value=state.mergeSources[0]?.file.name || '';
+      renderMerge();setStatus(`Removed ${source.file.name} from the merge.`);
+    });
+    row.append(info,remove);list.append(row);
+  });
+}
+function renderMergeGallery() {
+  const gallery=$('mergeGallery');gallery.innerHTML='';
+  if(!state.mergePages.length){gallery.innerHTML='<div class="empty-note">Add PDF files to see their pages here.</div>';return;}
+  state.mergePages.forEach((entry,position)=>{
+    const source=state.mergeSources.find(item=>item.id===entry.sourceId);
+    if(!source)return;
+    const card=document.createElement('div');card.className='page-card';
+    const wrap=document.createElement('div');wrap.className='thumb-wrap';
+    const canvas=document.createElement('canvas');canvas.dataset.pageIndex=entry.index;canvas.dataset.sourceId=entry.sourceId;wrap.append(canvas);
+    const foot=document.createElement('div');foot.className='page-card-foot';
+    const info=document.createElement('div');
+    const title=document.createElement('div');title.className='page-card-title';title.textContent=`Output page ${position+1}`;
+    const sub=document.createElement('div');sub.className='page-card-sub';sub.textContent=`${source.file.name} · source page ${entry.index+1}`;
+    info.append(title,sub);foot.append(info);card.append(wrap,foot);
+    const actions=document.createElement('div');actions.className='card-actions';
+    const up=document.createElement('button');up.className='btn secondary';up.textContent='↑ Move up';up.disabled=position===0;up.onclick=()=>moveMergePage(position,-1);
+    const down=document.createElement('button');down.className='btn secondary';down.textContent='↓ Move down';down.disabled=position===state.mergePages.length-1;down.onclick=()=>moveMergePage(position,1);
+    const remove=document.createElement('button');remove.className='btn danger';remove.textContent='Remove';remove.onclick=()=>{state.mergePages.splice(position,1);renderMerge();};
+    actions.append(up,down,remove);card.append(actions);gallery.append(card);
+  });
+  addLazyThumbnails(gallery,canvas=>{
+    const source=state.mergeSources.find(item=>item.id===Number(canvas.dataset.sourceId));
+    return source?.pdfjsDoc;
+  },220,255);
+}
+function moveMergePage(position,delta) {
+  const target=position+delta;if(target<0||target>=state.mergePages.length)return;
+  [state.mergePages[position],state.mergePages[target]]=[state.mergePages[target],state.mergePages[position]];
+  renderMerge();
+}
+$('mergeOutputName').addEventListener('input',()=>{state.mergeNameTouched=true;});
+$('mergeDownload').addEventListener('click',async()=>{
+  try {
+    if(state.mergeSources.length<2) throw new Error('Add at least two PDF files before merging.');
+    if(!state.mergePages.length) throw new Error('There are no pages in the merge.');
+    const out=await PDFLib.PDFDocument.create();
+    for(const entry of state.mergePages) {
+      const source=state.mergeSources.find(item=>item.id===entry.sourceId);
+      if(!source) continue;
+      const copied=await out.copyPages(source.libDoc,[entry.index]);
+      out.addPage(copied[0]);
+    }
+    let outputName=$('mergeOutputName').value.trim() || state.mergeSources[0].file.name;
+    if(!/\.pdf$/i.test(outputName)) outputName += '.pdf';
+    await downloadPdf(out,outputName);
+    setStatus(`Merged ${state.mergePages.length} page(s). Download filename: ${outputName}`);
+  } catch(error) {setStatus(error.message,true);}
+});
+
+function initEditor() {
+  const count=state.single.pageCount;
+  state.edit.pageOrder=Array.from({length:count},(_,i)=>i);
+  state.edit.rotations=Array(count).fill(0);
+  state.edit.blanks={};
+  state.edit.nextBlank=BLANK_BASE;
+  state.edit.overlays=[];
+  state.edit.activeOriginal=0;
+  state.edit.selectedOverlay=null;
+  state.edit.zoom=1;
+  $('editPageCount').textContent=`${count} page(s)`;
+}
+async function renderEditThumbs() {
+  const strip=$('editThumbs');strip.innerHTML='';
+  state.edit.pageOrder.forEach((original,position)=>{
+    const card=document.createElement('div');card.className='film-card'+(original===state.edit.activeOriginal?' active':'');
+    card.dataset.original=original;
+    const wrap=document.createElement('div');wrap.className='film-thumb';
+    const canvas=document.createElement('canvas');canvas.dataset.pageIndex=original;
+    if(isBlank(original)){
+      const b=state.edit.blanks[original],sc=Math.min(130/b.w,145/b.h);
+      canvas.width=Math.max(1,Math.round(b.w*sc));canvas.height=Math.max(1,Math.round(b.h*sc));
+      const ctx=canvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);
+      canvas.dataset.rendered='yes';
+    }
+    wrap.append(canvas);
+    const label=document.createElement('div');label.className='film-label';
+    label.textContent=isBlank(original)?`Blank ${position+1}`:`Page ${position+1}`;
+    card.append(wrap,label);
+    card.addEventListener('click',()=>selectEditPage(original));
+    strip.append(card);
+  });
+  addLazyThumbnails(strip,()=>state.single?.pdfjsDoc,130,145);
+}
+async function selectEditPage(original) {
+  if(!state.edit.pageOrder.includes(original))return;
+  state.edit.activeOriginal=original;state.edit.selectedOverlay=null;
+  $('editThumbs').querySelectorAll('.film-card').forEach(card=>card.classList.toggle('active',Number(card.dataset.original)===original));
+  updateObjectTools();
+  await renderActivePage();
+}
+function updateEditPageLabels() {
+  const id=state.edit.activeOriginal;
+  const position=state.edit.pageOrder.indexOf(id);
+  $('activePageLabel').textContent=isBlank(id)?`Blank page ${position+1} of ${state.edit.pageOrder.length}`:`Page ${position+1} of ${state.edit.pageOrder.length} · source page ${id+1}`;
+  $('editPageCount').textContent=`${state.edit.pageOrder.length} page(s) · ${Math.round(state.edit.zoom*100)}% zoom`;
+}
+async function pageDims(id){
+  if(isBlank(id)){const b=state.edit.blanks[id];return{w:b.w,h:b.h};}
+  const p=await state.single.pdfjsDoc.getPage(id+1);
+  const v=p.getViewport({scale:1,rotation:((p.rotate||0)+(state.edit.rotations[id]||0)+360)%360});
+  return{w:v.width,h:v.height};
+}
+async function renderActivePage() {
+  if(!state.single || state.edit.activeOriginal===null)return;
+  const token=++state.edit.renderToken;
+  const original=state.edit.activeOriginal;
+  const blank=isBlank(original);
+  let page,rotation=0;
+  if(blank){
+    const b=state.edit.blanks[original];
+    page={getViewport:o=>blankViewport(b.w,b.h,o.scale)};
+  } else {
+    page=await state.single.pdfjsDoc.getPage(original+1);
+    if(token!==state.edit.renderToken)return;
+    rotation=((page.rotate||0)+(state.edit.rotations[original]||0)+360)%360;
+  }
+  const stage=$('editorStage');
+  const availableWidth=Math.max(260,stage.clientWidth-58);
+  const availableHeight=Math.max(320,stage.clientHeight-58);
+  const base=page.getViewport({scale:1,rotation});
+  const fit=Math.min(availableWidth/base.width,availableHeight/base.height);
+  const viewport=page.getViewport({scale:fit*state.edit.zoom,rotation});
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  const canvas=$('pageCanvas');
+  canvas.width=Math.max(1,Math.round(viewport.width*dpr));
+  canvas.height=Math.max(1,Math.round(viewport.height*dpr));
+  canvas.style.width=`${viewport.width}px`;canvas.style.height=`${viewport.height}px`;
+  ['pageShell','overlayLayer'].forEach(id=>{$(id).style.width=`${viewport.width}px`;$(id).style.height=`${viewport.height}px`;});
+  state.edit.viewport=viewport;
+  state.edit.pdfPage=page;
+  const context=canvas.getContext('2d',{alpha:false});
+  try{
+    if(blank){context.fillStyle='#ffffff';context.fillRect(0,0,canvas.width,canvas.height);}
+    else await page.render({canvasContext:context,viewport,transform:[dpr,0,0,dpr,0,0],background:'rgb(255,255,255)'}).promise;
+  }catch(error){
+    if(token===state.edit.renderToken)setStatus('This page preview could not be rendered. The PDF may contain unsupported content.',true);
+  }
+  if(token!==state.edit.renderToken)return;
+  renderOverlayLayer();
+  updateEditPageLabels();
+}
+function findOverlay(id){return state.edit.overlays.find(item=>item.id===id);}
+function renderOverlayLayer() {
+  const layer=$('overlayLayer');layer.innerHTML='';
+  const vp=state.edit.viewport;if(!vp)return;
+  state.edit.overlays.filter(item=>item.page===state.edit.activeOriginal).forEach(item=>{
+    const el=document.createElement('div');
+    el.className='overlay-object'+(item.id===state.edit.selectedOverlay?' selected':'');
+    el.dataset.id=item.id;
+    el.style.left=`${item.x*100}%`;el.style.top=`${item.y*100}%`;
+    if(item.type==='text'){
+      el.classList.add('overlay-text');
+      el.textContent=item.text;
+      el.style.whiteSpace='pre';
+      el.style.fontSize=`${item.fontSize*vp.scale}px`;
+      el.style.color=item.color;
+      el.style.fontFamily=FONT_CSS[item.font||'sans'];
+      el.style.fontWeight=item.bold?'700':'400';
+      el.style.fontStyle=item.italic?'italic':'normal';
+      el.style.textDecoration=item.underline?'underline':'none';
+      el.style.textAlign=item.align||'left';
+      layer.append(el);
+      item.w=el.offsetWidth/vp.width;item.h=el.offsetHeight/vp.height;
+    } else {
+      el.style.width=`${item.w*100}%`;el.style.height=`${item.h*100}%`;
+      if(item.type==='image'){
+        const img=document.createElement('img');img.className='overlay-image';img.src=item.dataUrl;img.alt='Added image or signature';img.draggable=false;el.classList.add('overlay-picture');el.append(img);
+      } else if(item.type==='cover'){el.classList.add('overlay-cover');el.style.background=item.color;}
+      if(item.id===state.edit.selectedOverlay)addHandles(el);
+      layer.append(el);
+    }
+  });
+  updateObjectTools();
+}
+function updateObjectTools() {
+  const item=findOverlay(state.edit.selectedOverlay);
+  const isText=!!item&&item.type==='text';
+  $('objectTools').classList.toggle('visible',!!item);
+  $('editText').hidden=!isText;
+  $('fontSizeLabel').hidden=!isText;
+  $('textStyleGroup').hidden=!isText;
+  $('objectColorLabel').hidden=!item||(item.type!=='text'&&item.type!=='cover');
+  if(item){
+    $('objectTypeLabel').textContent=item.type==='text'?'Selected text':item.type==='image'?'Selected image / signature':'Selected cover area';
+    $('fontSize').value=item.fontSize||22;
+    $('objectColor').value=item.color||'#222222';
+    $('fontFamily').value=item.font||'sans';
+    $('textAlign').value=item.align||'left';
+    $('styleBold').classList.toggle('toggled',!!item.bold);
+    $('styleItalic').classList.toggle('toggled',!!item.italic);
+    $('styleUnderline').classList.toggle('toggled',!!item.underline);
+  }
+}
+function addOverlay(item) {
+  item.id='obj-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8);
+  item.page=state.edit.activeOriginal;
+  state.edit.overlays.push(item);
+  state.edit.selectedOverlay=item.id;
+  renderOverlayLayer();
+  setStatus('Object added. Drag it into position; use the corner handle to resize.');
+}
+function openTextModal(existingId=null) {
+  const existing=existingId?findOverlay(existingId):null;
+  $('textModalTitle').textContent=existing?'Rewrite text':'Add text';
+  $('textValue').value=existing?existing.text:'';
+  $('textModal').dataset.editingId=existingId||'';
+  $('textModal').style.display='flex';
+  $('textValue').focus();
+}
+$('addText').addEventListener('click',()=>{if(state.single)openTextModal();});
+$('editText').addEventListener('click',()=>{const item=findOverlay(state.edit.selectedOverlay);if(item?.type==='text')openTextModal(item.id);});
+$('cancelText').addEventListener('click',()=>$('textModal').style.display='none');
+$('confirmText').addEventListener('click',()=>{
+  const value=$('textValue').value.trim();if(!value){setStatus('Enter some text first.',true);return;}
+  const editingId=$('textModal').dataset.editingId;
+  if(editingId){const item=findOverlay(editingId);if(item)item.text=value;}
+  else addOverlay({type:'text',text:value,x:.27,y:.43,fontSize:22,color:'#222222',font:'sans',bold:false,italic:false,underline:false,align:'left'});
+  $('textModal').style.display='none';
+  renderOverlayLayer();
+  setStatus(editingId?'Text updated. You can move, style, or delete it.':'Text added. Drag it to the position you want.');
+});
+$('deleteObject').addEventListener('click',()=>{
+  if(!state.edit.selectedOverlay)return;
+  state.edit.overlays=state.edit.overlays.filter(item=>item.id!==state.edit.selectedOverlay);
+  state.edit.selectedOverlay=null;renderOverlayLayer();setStatus('Selected object deleted.');
+});
+function updateSelectedText(change){
+  const item=findOverlay(state.edit.selectedOverlay);if(!item)return;
+  change(item);renderOverlayLayer();
+}
+$('fontSize').addEventListener('input',()=>updateSelectedText(item=>{if(item.type==='text')item.fontSize=Math.max(6,Number($('fontSize').value)||12);}));
+$('objectColor').addEventListener('input',()=>updateSelectedText(item=>{item.color=$('objectColor').value;}));
+$('fontFamily').addEventListener('change',()=>updateSelectedText(item=>{item.font=$('fontFamily').value;}));
+$('textAlign').addEventListener('change',()=>updateSelectedText(item=>{item.align=$('textAlign').value;}));
+$('styleBold').addEventListener('click',()=>updateSelectedText(item=>{item.bold=!item.bold;}));
+$('styleItalic').addEventListener('click',()=>updateSelectedText(item=>{item.italic=!item.italic;}));
+$('styleUnderline').addEventListener('click',()=>updateSelectedText(item=>{item.underline=!item.underline;}));
+$('coverArea').addEventListener('click',()=>{
+  if(!state.single)return;
+  addOverlay({type:'cover',x:.3,y:.43,w:.16,h:.045,color:'#ffffff'});
+});
+$('imageFile').addEventListener('change',async event=>{
+  const file=event.target.files[0];event.target.value='';if(!file)return;
+  if(!['image/png','image/jpeg'].includes(file.type)){setStatus('Choose a PNG or JPEG image. PNG is recommended for transparent signatures.',true);return;}
+  try {
+    const bytes=new Uint8Array(await file.arrayBuffer());
+    const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file);});
+    addOverlay({type:'image',bytes,mime:file.type,dataUrl,x:.36,y:.36,w:.28,h:.28});
+  } catch(error){setStatus('The image could not be opened.',true);}
+});
+
+const HANDLES=['nw','n','ne','e','se','s','sw','w'];
+function addHandles(element){HANDLES.forEach(h=>{const s=document.createElement('span');s.className='resize-handle';s.dataset.h=h;element.append(s);});}
+function syncOverlaySelection() {
+  $('overlayLayer').querySelectorAll('.overlay-object').forEach(element=>{
+    const item=findOverlay(element.dataset.id);
+    const selected=element.dataset.id===state.edit.selectedOverlay;
+    element.classList.toggle('selected',selected);
+    const wantsHandle=selected&&!!item&&item.type!=='text';
+    element.querySelectorAll('.resize-handle').forEach(h=>h.remove());
+    if(wantsHandle)addHandles(element);
+  });
+  updateObjectTools();
+}
+$('overlayLayer').addEventListener('pointerdown',event=>{
+  const element=event.target.closest('.overlay-object');
+  if(!element){state.edit.selectedOverlay=null;syncOverlaySelection();return;}
+  const item=findOverlay(element.dataset.id);if(!item)return;
+  state.edit.selectedOverlay=item.id;syncOverlaySelection();
+  const rect=$('overlayLayer').getBoundingClientRect();
+  state.edit.drag={
+    id:item.id,mode:event.target.dataset.h?'resize':'move',handle:event.target.dataset.h||null,
+    startX:event.clientX,startY:event.clientY,
+    x:item.x,y:item.y,w:item.w,h:item.h,
+    layerW:rect.width,layerH:rect.height,pointerId:event.pointerId
+  };
+  try{$('overlayLayer').setPointerCapture(event.pointerId);}catch(_){}
+  event.preventDefault();
+});
+$('overlayLayer').addEventListener('pointermove',event=>{
+  const drag=state.edit.drag;if(!drag||drag.pointerId!==event.pointerId)return;
+  const item=findOverlay(drag.id);if(!item)return;
+  const dx=(event.clientX-drag.startX)/drag.layerW;
+  const dy=(event.clientY-drag.startY)/drag.layerH;
+  if(drag.mode==='move') {
+    item.x=Math.max(0,Math.min(1-item.w,drag.x+dx));
+    item.y=Math.max(0,Math.min(1-item.h,drag.y+dy));
+  } else {
+    const MIN=.02,hd=drag.handle||'se';
+    let x=drag.x,y=drag.y,w=drag.w,h=drag.h;
+    if(hd.includes('e'))w=Math.max(MIN,Math.min(1-drag.x,drag.w+dx));
+    if(hd.includes('s'))h=Math.max(MIN,Math.min(1-drag.y,drag.h+dy));
+    if(hd.includes('w')){x=Math.max(0,Math.min(drag.x+drag.w-MIN,drag.x+dx));w=drag.x+drag.w-x;}
+    if(hd.includes('n')){y=Math.max(0,Math.min(drag.y+drag.h-MIN,drag.y+dy));h=drag.y+drag.h-y;}
+    item.x=x;item.y=y;item.w=w;item.h=h;
+  }
+  const el=$('overlayLayer').querySelector(`[data-id="${item.id}"]`);
+  if(el){el.style.left=`${item.x*100}%`;el.style.top=`${item.y*100}%`;el.style.width=`${item.w*100}%`;el.style.height=`${item.h*100}%`;}
+});
+function endOverlayDrag(event){if(state.edit.drag&&state.edit.drag.pointerId===event.pointerId)state.edit.drag=null;}
+$('overlayLayer').addEventListener('pointerup',endOverlayDrag);
+$('overlayLayer').addEventListener('pointercancel',endOverlayDrag);
+$('overlayLayer').addEventListener('dblclick',event=>{
+  const element=event.target.closest('.overlay-object');if(!element)return;
+  const item=findOverlay(element.dataset.id);if(item?.type==='text')openTextModal(item.id);
+});
+
+async function moveEditPage(delta) {
+  const order=state.edit.pageOrder;const position=order.indexOf(state.edit.activeOriginal);const target=position+delta;
+  if(position<0||target<0||target>=order.length)return;
+  [order[position],order[target]]=[order[target],order[position]];
+  await renderEditThumbs();await renderActivePage();
+}
+$('movePageEarlier').addEventListener('click',()=>moveEditPage(-1));
+$('movePageLater').addEventListener('click',()=>moveEditPage(1));
+$('deleteCurrentPage').addEventListener('click',async()=>{
+  const order=state.edit.pageOrder;
+  if(order.length<=1){setStatus('At least one page must remain in the PDF.',true);return;}
+  const original=state.edit.activeOriginal;const position=order.indexOf(original);
+  order.splice(position,1);
+  state.edit.overlays=state.edit.overlays.filter(item=>item.page!==original);
+  state.edit.activeOriginal=order[Math.min(position,order.length-1)];
+  state.edit.selectedOverlay=null;
+  await renderEditThumbs();await renderActivePage();setStatus(`Source page ${original+1} marked for deletion. Download to apply the changes.`);
+});
+async function rotatePage(delta) {
+  const original=state.edit.activeOriginal;if(original===null)return;
+  if(isBlank(original)){setStatus('Blank pages cannot be rotated.',true);return;}
+  state.edit.rotations[original]=((state.edit.rotations[original]||0)+delta+360)%360;
+  await renderEditThumbs();await renderActivePage();
+  setStatus('Page rotation updated. Download to apply it.');
+}
+$('rotatePageLeft').addEventListener('click',()=>rotatePage(-90));
+$('rotatePageRight').addEventListener('click',()=>rotatePage(90));
+$('zoomIn').addEventListener('click',()=>{state.edit.zoom=Math.min(2.5,state.edit.zoom+.15);renderActivePage();});
+$('zoomOut').addEventListener('click',()=>{state.edit.zoom=Math.max(.5,state.edit.zoom-.15);renderActivePage();});
+$('zoomFit').addEventListener('click',()=>{state.edit.zoom=1;renderActivePage();});
+
+function hexColor(hex) {
+  const value=hex.replace('#','');
+  return PDFLib.rgb(parseInt(value.slice(0,2),16)/255,parseInt(value.slice(2,4),16)/255,parseInt(value.slice(4,6),16)/255);
+}
+async function exportEditedPdf() {
+  if(!state.single)throw new Error('Choose a PDF first.');
+  const order=state.edit.pageOrder;
+  if(!order.length)throw new Error('The PDF must contain at least one page.');
+  const out=await PDFLib.PDFDocument.create();
+  const pageMap=new Map();
+  for(const id of order){
+    if(isBlank(id)){
+      const b=state.edit.blanks[id];
+      out.addPage([b.w,b.h]);
+      pageMap.set(id,{page:out.getPage(out.getPageCount()-1),vp:blankViewport(b.w,b.h,1)});
+      continue;
+    }
+    const [copied]=await out.copyPages(state.single.libDoc,[id]);
+    const pdfjsPage=await state.single.pdfjsDoc.getPage(id+1);
+    const rotation=((pdfjsPage.rotate||0)+(state.edit.rotations[id]||0)+360)%360;
+    copied.setRotation(PDFLib.degrees(rotation));
+    out.addPage(copied);
+    pageMap.set(id,{page:out.getPage(out.getPageCount()-1),vp:pdfjsPage.getViewport({scale:1,rotation})});
+  }
+  const fonts={};
+  const fontFor=async(family,bold,italic)=>{
+    const key=family+(bold?'B':'')+(italic?'I':'');
+    if(!fonts[key])fonts[key]=await out.embedFont(PDFLib.StandardFonts[PDF_FONTS[family][(bold?1:0)+(italic?2:0)]]);
+    return fonts[key];
+  };
+  for(const item of state.edit.overlays){
+    const target=pageMap.get(item.page);if(!target)continue;
+    const page=target.page,vp=target.vp,W=vp.width,H=vp.height;
+    if(item.type==='text'){
+      const font=await fontFor(item.font||'sans',item.bold,item.italic);
+      const size=item.fontSize||22,color=hexColor(item.color||'#222222');
+      const lines=item.text.split('\n');
+      const widths=lines.map(line=>font.widthOfTextAtSize(line,size));
+      const blockW=Math.max(0,...widths);
+      const startX=item.x*W,startY=item.y*H+TEXT_BASE*size;
+      const origin=vp.convertToPdfPoint(startX,startY);
+      const angle=angleAt(vp,startX,startY);
+      const c=Math.cos(angle),s=Math.sin(angle),rot=PDFLib.degrees(angle*180/Math.PI);
+      lines.forEach((line,i)=>{
+        if(!line.trim())return;
+        const offset=item.align==='center'?(blockW-widths[i])/2:item.align==='right'?blockW-widths[i]:0;
+        const x=origin[0]+offset*c+i*TEXT_LH*size*s;
+        const y=origin[1]+offset*s-i*TEXT_LH*size*c;
+        page.drawText(line,{x,y,size,font,color,rotate:rot});
+        if(item.underline){
+          const ux=x+.1*size*s,uy=y-.1*size*c;
+          page.drawLine({start:{x:ux,y:uy},end:{x:ux+widths[i]*c,y:uy+widths[i]*s},thickness:Math.max(.5,size*.06),color});
+        }
+      });
+    } else {
+      const bottomX=item.x*W,bottomY=(item.y+item.h)*H;
+      const anchor=vp.convertToPdfPoint(bottomX,bottomY);
+      const rotate=PDFLib.degrees(angleAt(vp,bottomX,bottomY)*180/Math.PI);
+      const width=item.w*W,height=item.h*H;
+      if(item.type==='cover'){
+        page.drawRectangle({x:anchor[0],y:anchor[1],width,height,color:hexColor(item.color||'#ffffff'),rotate});
+      } else if(item.type==='image'){
+        const image=item.mime==='image/png'?await out.embedPng(item.bytes):await out.embedJpg(item.bytes);
+        page.drawImage(image,{x:anchor[0],y:anchor[1],width,height,rotate});
+      }
+    }
+  }
+  return out;
+}
+$('saveEdited').addEventListener('click',async()=>{
+  try {
+    $('saveEdited').disabled=true;$('saveEdited').textContent='Preparing PDF…';
+    const out=await exportEditedPdf();
+    const originalName=state.single.file.name;
+    await downloadPdf(out,originalName);
+    setStatus(`Your PDF is ready. Original filename preserved: ${originalName}`);
+  } catch(error) {setStatus(error.message||'Could not export the edited PDF.',true);}
+  finally {$('saveEdited').disabled=false;$('saveEdited').textContent='Download PDF';}
+});
+
+$('addBlankPage').addEventListener('click',()=>{if(state.single)$('blankModal').style.display='flex';});
+$('cancelBlank').addEventListener('click',()=>$('blankModal').style.display='none');
+$('confirmBlank').addEventListener('click',async()=>{
+  try{
+    const current=state.edit.activeOriginal,order=state.edit.pageOrder,position=order.indexOf(current);
+    const where=$('blankPos').value,count=Math.min(20,Math.max(1,parseInt($('blankCount').value,10)||1));
+    let w,h;
+    if($('blankSize').value==='a4'){w=595.28;h=841.89;}
+    else if($('blankSize').value==='letter'){w=612;h=792;}
+    else{const d=await pageDims(current);w=d.w;h=d.h;}
+    const at=where==='start'?0:where==='end'?order.length:where==='before'?Math.max(0,position):position+1;
+    const ids=[];
+    for(let i=0;i<count;i++){const id=state.edit.nextBlank++;state.edit.blanks[id]={w,h};ids.push(id);}
+    order.splice(at,0,...ids);
+    state.edit.activeOriginal=ids[0];state.edit.selectedOverlay=null;
+    $('blankModal').style.display='none';
+    await renderEditThumbs();await renderActivePage();
+    setStatus(`${count} blank page(s) inserted. Download to apply the changes.`);
+  }catch(error){setStatus(error.message||'Could not insert the blank page.',true);}
+});
+
+const heroLogo=$('heroLogo'),heroText=$('heroText');
+let scrollFrame=0;
+function updateHeroOnScroll(){
+  scrollFrame=0;
+  const y=window.scrollY||0,p=Math.min(1,y/260);
+  document.body.classList.toggle('scrolled',y>40);
+  heroLogo.style.transform=`translate3d(0,${(-p*280).toFixed(1)}px,0) scale(${(1-p*.2).toFixed(3)})`;
+  heroLogo.style.opacity=Math.max(0,1-p*1.2).toFixed(3);
+  heroLogo.style.filter=`blur(${(p*8).toFixed(2)}px)`;
+  heroText.style.transform=`translate3d(0,${(-p*130).toFixed(1)}px,0)`;
+  heroText.style.opacity=Math.max(0,1-p*1.4).toFixed(3);
+}
+window.addEventListener('scroll',()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(updateHeroOnScroll);},{passive:true});
+updateHeroOnScroll();
+
+const menuEl=$('menu'),menuBtn=$('menuBtn');
+function closeMenu(){menuEl.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}
+menuBtn.addEventListener('click',e=>{e.stopPropagation();const o=!menuEl.classList.contains('open');menuEl.classList.toggle('open',o);menuBtn.setAttribute('aria-expanded',String(o));});
+document.addEventListener('click',e=>{if(!menuEl.contains(e.target))closeMenu();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
+$('dd').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-tool],button[data-mode]');if(!b)return;
+  closeMenu();
+  if(b.dataset.tool)openTool(b.dataset.tool);else setMode(b.dataset.mode);
+});
+
+document.getElementById('toTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+$('pdfFiles').addEventListener('change',event=>handleFiles(event.target.files));
+const drop=$('dropZone');
+['dragenter','dragover'].forEach(type=>drop.addEventListener(type,event=>{event.preventDefault();drop.classList.add('drag');}));
+['dragleave','drop'].forEach(type=>drop.addEventListener(type,event=>{event.preventDefault();drop.classList.remove('drag');}));
+drop.addEventListener('drop',event=>handleFiles(event.dataTransfer.files));
+document.querySelectorAll('.tool').forEach(button=>button.addEventListener('click',()=>setMode(button.dataset.mode)));
+let resizeTimer=null;
+if('ResizeObserver' in window) {
+  const observer=new ResizeObserver(()=>{
+    if(state.mode==='edit'&&state.single){clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>renderActivePage(),120);}
+  });
+  observer.observe($('editorStage'));
+}
+setMode('delete');
+})();
+</script>
+</body>
+</html>
